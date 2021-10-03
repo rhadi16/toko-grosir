@@ -8,5 +8,5 @@
 
   while($data1 = mysqli_fetch_array($dt1)){
 ?>
-  <option value="<?php echo $data1['id_barang']; ?>"><?php echo $data1['nama_barang']; ?></option>
+  <option value="<?php echo $data1['id_barang'].'||'.$data1['stok']; ?>"><?php echo $data1['nama_barang']; ?></option>
 <?php } ?>

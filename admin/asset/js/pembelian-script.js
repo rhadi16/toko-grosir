@@ -164,17 +164,17 @@ $( function() {
                   <div class="row">
                     <div class="col s12 m4">
                       <div class="ui-widget input-field">
-                        <select id="combobox`+ nextindex +`" name="id_barang" required>
+                        <select id="combobox`+ nextindex +`" name="id_barang[]" required>
                         </select>
                         <label class="active">Pilih Barang</label>
                       </div>
                     </div>
                     <div class="input-field col s12 m4">
-                      <input placeholder="" id="harga_yg_dibeli`+nextindex+`" type="text" class="validate" name="harga_yg_dibeli" required>
+                      <input placeholder="" id="harga_yg_dibeli`+nextindex+`" type="number" class="validate" name="harga_yg_dibeli[]" required>
                       <label for="harga_yg_dibeli`+nextindex+`" class="active">Harga Total</label>
                     </div>
                     <div class="input-field col s12 m4">
-                      <input placeholder="" id="stok_yg_dibeli`+nextindex+`" type="text" class="validate" name="stok_yg_dibeli" required>
+                      <input placeholder="" id="stok_yg_dibeli`+nextindex+`" type="number" class="validate" name="stok_yg_dibeli[]" required>
                       <label for="stok_yg_dibeli`+nextindex+`" class="active">Jumlah Barang</label>
                     </div>
                   </div>
