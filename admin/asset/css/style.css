@@ -1,0 +1,151 @@
+/* Pegawai.php & liat-barang.php */
+#pegawai .title,
+#list-barang .title {
+	text-align: center;
+	font-size: 2.5rem;
+	font-weight: 500;
+	text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+}
+#pegawai .list,
+#list-barang .list {
+	margin-top: 30px;
+}
+#pegawai .list .row.parent,
+#list-barang .list .row.parent {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+}
+#pegawai .list .row.parent .col.s12,
+#pegawai .list .row.parent .col.m6,
+#pegawai .list .row.parent .col.l4,
+#list-barang .list .row.parent .col.s12,
+#list-barang .list .row.parent .col.m6,
+#list-barang .list .row.parent .col.l4 {
+	margin-left: unset;
+}
+#pegawai .list .card-panel,
+#list-barang .list .card-panel {
+	background: linear-gradient(70deg, #eeeeee, #fafafa);
+	padding: 10px 0 0 0;
+}
+#pegawai .list .card-panel .img,
+#list-barang .list .card-panel .img {
+	width: 60%;
+	height: 130px;
+	background-size: cover;
+	background-position: center;
+	margin: 5px auto;
+	border-radius: 20px;
+	box-shadow: inset 1px 1px 5px rgba(0, 0, 0, 0.4);
+}
+#pegawai .list .card-panel table th,
+#pegawai .list .card-panel table td,
+#list-barang .list .card-panel table th,
+#list-barang .list .card-panel table td {
+	padding: 5px;
+}
+#pegawai .list .card-panel table .btn,
+#list-barang .list .card-panel table .btn {
+	height: unset;
+	line-height: unset;
+	padding: 3px;
+	margin: 0 3px;
+	border-radius: 5px;
+	text-transform: capitalize;
+}
+#pegawai #tambah-pegawai .modal-content,
+#pegawai .edit-pegawai .modal-content,
+#list-barang #tambah-barang .modal-content,
+#list-barang .edit-barang .modal-content {
+	padding-bottom: unset;
+}
+#pegawai #tambah-pegawai .modal-content h4,
+#pegawai .edit-pegawai .modal-content h4,
+#list-barang #tambah-barang .modal-content h4,
+#list-barang .edit-barang .modal-content h4 {
+	font-weight: 500;
+	text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+}
+#pegawai #tambah-pegawai .modal-content .file-field .btn,
+#pegawai .edit-pegawai .modal-content .file-field .btn,
+#list-barang #tambah-barang .modal-content .file-field .btn,
+#list-barang .edit-barang .modal-content .file-field .btn {
+	height: 36px;
+    line-height: 36px;
+    padding: 0 10px;
+}
+#pegawai input[type=text]:not(.browser-default).validate + label,
+#list-barang input[type=text]:not(.browser-default).validate + label,
+#pegawai input[type=number]:not(.browser-default).validate + label,
+#list-barang input[type=number]:not(.browser-default).validate + label {
+	width: 99%;
+}
+
+/* list-barang.php */
+#list-barang .pencarian-barang .card {
+	padding: 15px 0;
+	background: linear-gradient(70deg, #eeeeee, #fafafa);
+	margin-top: 20px;
+}
+#list-barang .pencarian-barang .card .row {
+	margin-bottom: unset;
+}
+#list-barang .pagination li.active {
+	background-color: #1565c0;
+}
+#list-barang .parent-btn-paginasi {
+	display: flex;
+	justify-content: center;
+}
+#list-barang .pagination {
+	width: unset;
+	margin-bottom: 40px;
+}
+
+
+/* Halaman Utama */
+#hal-utama .card-panel {
+	margin-top: 35px;
+	padding-bottom: 14px;
+}
+#hal-utama .card-panel .row {
+	margin-bottom: unset;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+}
+#hal-utama .card-panel .row .col.s12,
+#hal-utama .card-panel .row .col.m6 {
+	margin-left: unset;
+}
+#hal-utama .card-panel .row .col {
+	margin-bottom: 10px;
+}
+#hal-utama .card-panel .row .col a {
+	width: 100%;
+	height: unset;
+    line-height: unset;
+    padding: 5px 16px;
+}
+
+@media only screen and (max-width: 992px) {
+	/* Pegawai.php */
+
+}
+
+@media only screen and (max-width: 576px) {
+	/* pegawai.php & list-barang.php*/
+	#pegawai #tambah-pegawai .modal-content h4,
+	#pegawai .edit-pegawai .modal-content h4,
+	#list-barang #tambah-barang .modal-content h4,
+	#list-barang .edit-barang .modal-content h4 {
+		font-size: 1.4rem;
+	}
+	#pegawai #tambah-pegawai .modal-content,
+	#pegawai .edit-pegawai .modal-content,
+	#list-barang #tambah-barang .modal-content,
+	#list-barang .edit-barang .modal-content {
+		padding: 10px 10px 0 10px;
+	}
+}

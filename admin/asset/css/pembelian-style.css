@@ -1,0 +1,80 @@
+.ui-helper-hidden-accessible{
+  display:none
+}
+
+.ui-autocomplete {
+  border: 1px solid #ccc;
+  max-width: 500px;
+}
+.ui-autocomplete-input {
+  width: 500px;
+  display: inline-block;
+}
+.ui-menu-item {
+  list-style: none;
+}
+.ui-menu-item > div {
+  cursor: pointer;
+  display: block;
+  padding: 0.5rem;
+  background: #fff;
+}
+div.ui-state-active {
+  background: #eee;
+}
+.custom-combobox-toggle {
+  position: static;
+  display: inline-block;
+  top: 0;
+  right: 0;
+  width: 1.75em;
+  height: 2.1em;
+  margin-left: -32px;
+  margin-bottom: -.75em;
+  padding: 0;
+  background-color: #fefefe;
+  background-origin: content-box;
+  background-position: right -1rem center;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: 9px 6px;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' version='1.1' width='32' height='24' viewBox='0 0 32 24'><polygon points='0,0 32,0 16,24' style='fill: rgb%28138, 138, 138%29'></polygon></svg>");
+}
+.ui-autocomplete {
+  box-shadow: 0 0 5px #cacaca;
+}
+
+#pembelian {
+  margin-top: 20px;
+}
+#pembelian #tambah-kolom {
+  margin-bottom: 10px;
+}
+#pembelian .card-panel {
+  position: relative;
+}
+#pembelian .card-panel .row {
+  margin-bottom: unset;
+}
+#pembelian .card-panel .remove {
+  position: absolute;
+  z-index: unset;
+  right: 10px;
+  top: 10px;
+  height: unset;
+  line-height: unset;
+  padding: 0 5px;
+}
+#pembelian button#input-pembelian {
+  z-index: unset;
+}
+@media only screen and (max-width: 992px) {
+  .ui-autocomplete {
+    max-width: 190px;
+  }
+}
+@media only screen and (max-width: 576px) {
+  .ui-autocomplete {
+    max-width: 220px;
+  }
+}
