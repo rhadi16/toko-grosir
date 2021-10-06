@@ -1,3 +1,7 @@
+nav .brand-logo {
+	font-weight: bold;
+	text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.3);
+}
 /* Pegawai.php & liat-barang.php */
 #pegawai .title,
 #list-barang .title {
@@ -135,6 +139,9 @@
 }
 
 @media only screen and (max-width: 576px) {
+	nav .brand-logo {
+		font-size: 1.5rem;
+	}
 	/* pegawai.php & list-barang.php*/
 	#pegawai #tambah-pegawai .modal-content h4,
 	#pegawai .edit-pegawai .modal-content h4,

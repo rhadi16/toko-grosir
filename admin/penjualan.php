@@ -7,32 +7,33 @@
   $qry    = "SELECT 
 							a.*,
 							b.nama_barang,
-							b.stok
-						FROM pembelian a
+							b.stok,
+							b.harga
+						FROM penjualan a
 						LEFT JOIN list_barang b ON a.id_barang=b.id_barang";
       
   $orderby = ""; 
 
-  $view   = "pembelian.php";
+  $view   = "penjualan.php";
 
   $column = [
-              'value'  => ['nama_barang', 'stok'],
-              'label'  => ['Nama Barang', 'Stok Barang'],
+              'value'  => ['nama_barang', 'tot_yg_dibeli'],
+              'label'  => ['Nama Barang', 'Total Harga Yang Dibeli'],
               'type'   => ['text', 'int']
             ];
 ?>
 
-	<section id="pembelian">
+	<section id="penjualan">
 		<div class="container">
-			<h5 class="center-align title-form">Form Tambah Pembelian</h5>
+			<h5 class="center-align title-form">Form Tambah Penjualan</h5>
 			<a class="waves-effect waves-light btn  light-blue darken-1" id="tambah-kolom"><i class="material-icons left">add</i>Tambah Form Isian</a>
 			<div class="row">
-				<form action="func/pembelian_func.php?action=insert" enctype="multipart/form-data" method="post">
+				<form action="func/penjualan_func.php?action=insert" enctype="multipart/form-data" method="post">
 				<div class="element col s12" id="div_1">
 			    <div id="txt_1">
 			      <div class="card-panel bg">
 							<div class="row">
-						    <div class="col s12 m6 l3">
+						    <div class="col s12 m6 l4">
 					        <div class="ui-widget input-field">
 					          <select id="combobox1" name="id_barang[]" required>
 					            <option value="">Select one...</option>
@@ -43,21 +44,17 @@
 
                         while($data1 = mysqli_fetch_array($dt1)){
                       ?>
-						            <option value="<?php echo $data1['id_barang'].'||'.$data1['stok']; ?>"><?php echo $data1['nama_barang']; ?></option>
+						            <option value="<?php echo $data1['id_barang'].'||'.$data1['stok'].'||'.$data1['harga']; ?>"><?php echo $data1['nama_barang']; ?></option>
 					          	<?php } ?>
 					          </select>
 					          <label>Pilih Barang</label>
 					        </div>
 						    </div>
-						    <div class="input-field col s12 m6 l3">
-				          <input placeholder="" id="harga_yg_dibeli" type="number" class="validate" name="harga_yg_dibeli[]" required>
-				          <label for="harga_yg_dibeli">Harga Total</label>
+				        <div class="input-field col s12 m6 l4">
+				          <input placeholder="" id="jum_yg_dibeli" type="number" class="validate" name="jum_yg_dibeli[]" required>
+				          <label for="jum_yg_dibeli">Jumlah Barang Yang Dibeli</label>
 				        </div>
-				        <div class="input-field col s12 m6 l3">
-				          <input placeholder="" id="stok_yg_dibeli" type="number" class="validate" name="stok_yg_dibeli[]" required>
-				          <label for="stok_yg_dibeli">Jumlah Barang</label>
-				        </div>
-				        <div class="input-field col s12 m6 l3">
+				        <div class="input-field col s12 m6 l4">
 				          <input placeholder="" id="tanggal" type="text" class="validate datepicker" name="tanggal[]" required>
 				          <label for="tanggal">Tanggal Beli</label>
 				        </div>
@@ -66,23 +63,23 @@
 			    </div>
 				</div>
 				<div class="col s12">
-					<button type="submit" class="waves-effect waves-light btn green darken-1" id="input-pembelian"><i class="material-icons left">send</i>Input</button>
+					<button type="submit" class="waves-effect waves-light btn green darken-1" id="input-penjualan"><i class="material-icons left">send</i>Input</button>
 				</div>
 				</form>
 		  </div>
 		</div>
 
-		<div class="container list-barang">
-			<h5 class="center-align title-form">List Pembelian</h5>
+		<div class="container list-penjualan">
+			<h5 class="center-align title-form">List Penjualan</h5>
 			<div class="card-panel">
 				<table class="striped centered responsive-table">
 	        <thead>
 	          <tr>
 	          		<th>No.</th>
 	              <th>Nama Barang</th>
-	              <th>Stok Yang Dibeli</th>
-	              <th>Harga</th>
-	              <th>Stok Sekarang</th>
+	              <th>Jumlah Barang Yang Dibeli</th>
+	              <th>Harga Barang</th>
+	              <th>Total Harga</th>
 	              <th>Tanggal</th>
 	              <th>aksi</th>
 	          </tr>
@@ -108,9 +105,9 @@
 	          <tr>
 	          	<td><?php echo $no; ?></td>
 	            <td><?php echo $data['nama_barang']; ?></td>
-	            <td><?php echo $data['stok_yg_dibeli']; ?></td>
-	            <td><?php echo $data['harga_yg_dibeli']; ?></td>
-	            <td><?php echo $data['stok']; ?></td>
+	            <td><?php echo $data['jum_yg_dibeli']; ?></td>
+	            <td><?php echo $data['harga']; ?></td>
+	            <td><?php echo $data['tot_yg_dibeli']; ?></td>
 	            <td><?php echo datetimeFormat::TanggalIndo($data['tanggal']); ?></td>
 	            <td>
 	            	<a class="waves-effect waves-light btn red darken-1 confirm-delete-stok" style="cursor: pointer;">Hapus Stok</a>
@@ -121,7 +118,7 @@
 				      $('.confirm-delete-stok').on('click', function(e) {
 				        Swal.fire({
 				          title: 'Anda Yakin?',
-				          text: "Menghapus Barang <?php echo $data['nama_barang']; ?>, Jumlah Stok Barang Juga Akan Berkurang Di List Barang!",
+				          text: "Menghapus Barang <?php echo $data['nama_barang']; ?>, Jumlah Stok Barang Juga Akan Bertambah Di List Barang!",
 				          icon: 'warning',
 				          showCancelButton: true,
 				          confirmButtonColor: '#3085d6',
@@ -137,7 +134,7 @@
 				      $('.confirm-delete-data').on('click', function(e) {
 				        Swal.fire({
 				          title: 'Anda Yakin?',
-				          text: "Menghapus Barang <?php echo $data['nama_barang']; ?>, Jumlah Stok Barang Tidak Akan Berkurang Di List Barang!",
+				          text: "Menghapus Barang <?php echo $data['nama_barang']; ?>, Jumlah Stok Barang Tidak Akan Bertambah Di List Barang!",
 				          icon: 'warning',
 				          showCancelButton: true,
 				          confirmButtonColor: '#3085d6',
@@ -156,7 +153,7 @@
 			</div>
 			<div class="btn-delete center-align">
 				<?php 
-					$data_pembelian = mysqli_query($mysqli, "SELECT * FROM pembelian");
+					$data_pembelian = mysqli_query($mysqli, "SELECT * FROM penjualan");
 
 					$jum_pembelian = mysqli_num_rows($data_pembelian);
 
@@ -170,7 +167,7 @@
 		      $('.confirm-delete-all-stok').on('click', function(e) {
 		        Swal.fire({
 		          title: 'Anda Yakin?',
-		          text: "Menghapus Semua Barang, Jumlah Stok Barang Juga Akan Berkurang Di List Barang!",
+		          text: "Menghapus Semua Barang, Jumlah Stok Barang Juga Akan Bertambah Di List Barang!",
 		          icon: 'warning',
 		          showCancelButton: true,
 		          confirmButtonColor: '#3085d6',
@@ -186,7 +183,7 @@
 		      $('.confirm-delete-all-data').on('click', function(e) {
 		        Swal.fire({
 		          title: 'Anda Yakin?',
-		          text: "Menghapus Semua Barang, Jumlah Stok Barang Tidak Akan Berkurang Di List Barang!",
+		          text: "Menghapus Semua Barang, Jumlah Stok Barang Tidak Akan Bertambah Di List Barang!",
 		          icon: 'warning',
 		          showCancelButton: true,
 		          confirmButtonColor: '#3085d6',
@@ -227,37 +224,25 @@
 	  if (desc_in == "success-in") {
 	    Swal.fire(
 	      'Berhasil!',
-	      'Anda Telah Melakukan Penambahan Jumlah Barang',
+	      'Anda Telah Melakukan Penjualan Barang',
 	      'success'
 	    )
 	  } else if (desc_in == "failed-in") {
 	  	Swal.fire(
 	      'Gagal!',
-	      'Anda Gagal Melakukan Penambahan Jumlah Barang',
-	      'error'
-	    )
-	  } else if (desc_in == "success-ed") {
-	  	Swal.fire(
-	      'Berhasil!',
-	      'Anda Telah Melakukan Perubahan Barang',
-	      'success'
-	    )
-	  } else if (desc_in == "failed-ed") {
-	  	Swal.fire(
-	      'Gagal!',
-	      'Anda Gagal Melakukan Perubahan Barang',
+	      'Anda Gagal Melakukan Penjualan Barang',
 	      'error'
 	    )
 	  } else if (desc_in == "success-del") {
 	  	Swal.fire(
 	      'Berhasil!',
-	      'Anda Telah Melakukan Penghapusan Barang',
+	      'Anda Telah Melakukan Penghapusan Penjualan',
 	      'success'
 	    )
 	  } else if (desc_in == "failed-del") {
 	  	Swal.fire(
 	      'Gagal!',
-	      'Anda Gagal Melakukan Penghapusan Barang',
+	      'Anda Gagal Melakukan Penghapusan Penjualan',
 	      'error'
 	    )
 	  }
@@ -267,4 +252,4 @@
 <?php include('template/footer.php'); ?>
 <!-- <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script> -->
 <script type="text/javascript" src="asset/js/jquery-ui.js"></script>
-<script type="text/javascript" src="asset/js/pembelian-script.js"></script>
+<script type="text/javascript" src="asset/js/penjualan-script.js"></script>

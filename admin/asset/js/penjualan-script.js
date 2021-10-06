@@ -1,7 +1,7 @@
 let max = 2;
 $(document).ready(function(){
-  $('#pembelian').find('input[class$="select-dropdown dropdown-trigger"]').remove();
-  $('#pembelian').find('svg[class$="caret"]').remove();
+  $('#penjualan').find('input[class$="select-dropdown dropdown-trigger"]').remove();
+  $('#penjualan').find('svg[class$="caret"]').remove();
   $( ".datepicker" ).datepicker({
     format: 'yyyy-mm-dd'
   });
@@ -164,22 +164,18 @@ $( function() {
                 <div class="card-panel bg">
                   <a class="remove waves-effect waves-light btn red darken-1" id="remove_`+ nextindex +`"><i class="material-icons">close</i></a>
                   <div class="row">
-                    <div class="col s12 m6 l3">
+                    <div class="col s12 m6 l4">
                       <div class="ui-widget input-field">
                         <select id="combobox`+ nextindex +`" name="id_barang[]" required>
                         </select>
                         <label class="active">Pilih Barang</label>
                       </div>
                     </div>
-                    <div class="input-field col s12 m6 l3">
-                      <input placeholder="" id="harga_yg_dibeli`+nextindex+`" type="number" class="validate" name="harga_yg_dibeli[]" required>
-                      <label for="harga_yg_dibeli`+nextindex+`" class="active">Harga Total</label>
+                    <div class="input-field col s12 m6 l4">
+                      <input placeholder="" id="jum_yg_dibeli`+nextindex+`" type="number" class="validate" name="jum_yg_dibeli[]" required>
+                      <label for="jum_yg_dibeli`+nextindex+`" class="active">Jumlah Barang Yang Dibeli</label>
                     </div>
-                    <div class="input-field col s12 m6 l3">
-                      <input placeholder="" id="stok_yg_dibeli`+nextindex+`" type="number" class="validate" name="stok_yg_dibeli[]" required>
-                      <label for="stok_yg_dibeli`+nextindex+`" class="active">Jumlah Barang</label>
-                    </div>
-                    <div class="input-field col s12 m6 l3">
+                    <div class="input-field col s12 m6 l4">
                       <input placeholder="" id="tanggal`+nextindex+`" type="text" class="validate datepicker`+nextindex+`" name="tanggal[]" required>
                       <label for="tanggal`+nextindex+`" class="active">Tanggal Beli</label>
                     </div>

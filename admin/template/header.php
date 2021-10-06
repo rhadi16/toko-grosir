@@ -38,6 +38,7 @@
               <li><a href="pegawai.php">Pegawai</a></li>
               <li><a href="list-barang.php">Kelola Barang</a></li>
               <li><a href="pembelian.php">Kelola Pembelian</a></li>
+              <li><a href="penjualan.php">Kelola Penjualan</a></li>
               <li><a class="waves-effect waves-light btn modal-trigger red darken-4 confirmation-logout" style="cursor: pointer;">Logout</a></li>
             </ul>
           </div>
@@ -50,6 +51,7 @@
       <li><a href="pegawai.php">Pegawai</a></li>
       <li><a href="list-barang.php">Kelola Barang</a></li>
       <li><a href="pembelian.php">Kelola Pembelian</a></li>
+      <li><a href="penjualan.php">Kelola Penjualan</a></li>
       <li><a class="waves-effect waves-light btn modal-trigger red darken-4 confirmation-logout" style="cursor: pointer;">Logout</a></li>
     </ul>
 
