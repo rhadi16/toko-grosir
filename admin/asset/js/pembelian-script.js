@@ -5,6 +5,7 @@ $(document).ready(function(){
   $( ".datepicker" ).datepicker({
     format: 'yyyy-mm-dd'
   });
+  $('.pencarian-barang select').formSelect();
 });
 
 $( function() {

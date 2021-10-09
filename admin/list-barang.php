@@ -81,13 +81,11 @@
 			  </form>
 		  </div>
 
-		  <div class="container">
-	      <div class="container pencarian-barang">
-	        <div class="card">
-	          <?php include('../paginasi/pencarian.php'); ?>
-	        </div>
-	      </div>
-	    </div>
+      <div class="container pencarian-barang">
+        <div class="card">
+          <?php include('../paginasi/pencarian.php'); ?>
+        </div>
+      </div>
 
 			<div class="list">
 				<div class="row parent">

@@ -8,18 +8,19 @@
 							a.*,
 							b.nama_barang,
 							b.stok,
-							b.harga
+							b.harga,
+							b.diskon
 						FROM penjualan a
 						LEFT JOIN list_barang b ON a.id_barang=b.id_barang";
       
-  $orderby = ""; 
+  $orderby = "id"; 
 
   $view   = "penjualan.php";
 
   $column = [
-              'value'  => ['nama_barang', 'tot_yg_dibeli'],
-              'label'  => ['Nama Barang', 'Total Harga Yang Dibeli'],
-              'type'   => ['text', 'int']
+              'value'  => ['nama_barang'],
+              'label'  => ['Nama Barang'],
+              'type'   => ['text']
             ];
 ?>
 
@@ -71,86 +72,11 @@
 
 		<div class="container list-penjualan">
 			<h5 class="center-align title-form">List Penjualan</h5>
-			<div class="card-panel">
-				<table class="striped centered responsive-table">
-	        <thead>
-	          <tr>
-	          		<th>No.</th>
-	              <th>Nama Barang</th>
-	              <th>Jumlah Barang Yang Dibeli</th>
-	              <th>Harga Barang</th>
-	              <th>Total Harga</th>
-	              <th>Tanggal</th>
-	              <th>aksi</th>
-	          </tr>
-	        </thead>
-
-	        <tbody>
-	        <?php 
-	        	$no = 1;
-						$page = (isset($_GET['page']))? (int) $_GET['page'] : 1;
-						$kolomCari=(isset($_GET['Kolom']))? $_GET['Kolom'] : "";
-						$kolomKataKunci=(isset($_GET['KataKunci']))? $_GET['KataKunci'] : "";
-
-						//kondisi jika parameter pencarian kosong
-						if($kolomCari=="" && $kolomKataKunci==""){
-						  $dt = mysqli_query($mysqli, "$qry");
-						}else{
-						//kondisi jika parameter kolom pencarian diisi
-						  $dt = mysqli_query($mysqli, "$qry WHERE $kolomCari LIKE '%$kolomKataKunci%'");
-						}
-
-						while($data = mysqli_fetch_array($dt)) {
-					?>
-	          <tr>
-	          	<td><?php echo $no; ?></td>
-	            <td><?php echo $data['nama_barang']; ?></td>
-	            <td><?php echo $data['jum_yg_dibeli']; ?></td>
-	            <td><?php echo $data['harga']; ?></td>
-	            <td><?php echo $data['tot_yg_dibeli']; ?></td>
-	            <td><?php echo datetimeFormat::TanggalIndo($data['tanggal']); ?></td>
-	            <td>
-	            	<a class="waves-effect waves-light btn red darken-1 confirm-delete-stok" style="cursor: pointer;">Hapus Stok</a>
-	            	<a class="waves-effect waves-light btn lime darken-1 confirm-delete-data" style="cursor: pointer;">Hapus Data</a>
-	            </td>
-	          </tr>
-	          <script type="text/javascript">
-				      $('.confirm-delete-stok').on('click', function(e) {
-				        Swal.fire({
-				          title: 'Anda Yakin?',
-				          text: "Menghapus Barang <?php echo $data['nama_barang']; ?>, Jumlah Stok Barang Juga Akan Bertambah Di List Barang!",
-				          icon: 'warning',
-				          showCancelButton: true,
-				          confirmButtonColor: '#3085d6',
-				          cancelButtonColor: '#d33',
-				          confirmButtonText: 'Ya, Yakin!'
-				        }).then((result) => {
-				          if (result.isConfirmed) {
-				            window.location.href = "<?php echo 'func/pembelian_func.php?action=delete-stok&id='.$data['id'].'&id_barang='.$data['id_barang'] ?>";
-				          }
-				        })
-				      });
-
-				      $('.confirm-delete-data').on('click', function(e) {
-				        Swal.fire({
-				          title: 'Anda Yakin?',
-				          text: "Menghapus Barang <?php echo $data['nama_barang']; ?>, Jumlah Stok Barang Tidak Akan Bertambah Di List Barang!",
-				          icon: 'warning',
-				          showCancelButton: true,
-				          confirmButtonColor: '#3085d6',
-				          cancelButtonColor: '#d33',
-				          confirmButtonText: 'Ya, Yakin!'
-				        }).then((result) => {
-				          if (result.isConfirmed) {
-				            window.location.href = "<?php echo 'func/pembelian_func.php?action=delete-data&id='.$data['id'] ?>";
-				          }
-				        })
-				      });
-				    </script>
-	        <?php $no++; } ?>
-	        </tbody>
-	      </table>
-			</div>
+      <div class="pencarian-barang">
+        <div class="card-panel bg">
+          <?php include('../paginasi/pencarian.php'); ?>
+        </div>
+      </div>
 			<div class="btn-delete center-align">
 				<?php 
 					$data_pembelian = mysqli_query($mysqli, "SELECT * FROM penjualan");
@@ -175,7 +101,7 @@
 		          confirmButtonText: 'Ya, Yakin!'
 		        }).then((result) => {
 		          if (result.isConfirmed) {
-		            window.location.href = "<?php echo 'func/pembelian_func.php?action=delete-all-stok'?>";
+		            window.location.href = "<?php echo 'func/penjualan_func.php?action=delete-all-stok'?>";
 		          }
 		        })
 		      });
@@ -191,11 +117,100 @@
 		          confirmButtonText: 'Ya, Yakin!'
 		        }).then((result) => {
 		          if (result.isConfirmed) {
-		            window.location.href = "<?php echo 'func/pembelian_func.php?action=delete-all-data'?>";
+		            window.location.href = "<?php echo 'func/penjualan_func.php?action=delete-all-data'?>";
 		          }
 		        })
 		      });
 		    </script>
+			</div>
+			<div class="card-panel">
+				<table class="striped centered responsive-table">
+	        <thead>
+	          <tr>
+	          		<th>No.</th>
+	              <th>Nama Barang</th>
+	              <th>Quantity</th>
+	              <th>Harga Satuan</th>
+	              <th>Total Harga</th>
+	              <th>Tanggal</th>
+	              <th>aksi</th>
+	          </tr>
+	        </thead>
+
+	        <tbody>
+	        <?php 
+	        	$no = 1;
+						$page = (isset($_GET['page']))? (int) $_GET['page'] : 1;
+						$kolomCari=(isset($_GET['Kolom']))? $_GET['Kolom'] : "";
+						$kolomKataKunci=(isset($_GET['KataKunci']))? $_GET['KataKunci'] : "";
+
+						//kondisi jika parameter pencarian kosong
+						if($kolomCari=="" && $kolomKataKunci==""){
+						  $dt = mysqli_query($mysqli, "$qry ORDER BY $orderby DESC");
+						}else{
+						//kondisi jika parameter kolom pencarian diisi
+						  $dt = mysqli_query($mysqli, "$qry WHERE $kolomCari LIKE '%$kolomKataKunci%'");
+						}
+
+						while($data = mysqli_fetch_array($dt)) {
+					?>
+	          <tr>
+	          	<td><?php echo $no; ?></td>
+	            <td><?php echo $data['nama_barang']; ?></td>
+	            <td><?php echo $data['jum_yg_dibeli']; ?></td>
+	            <td>
+            	Rp. <?php if ($data['diskon'] == 0) {
+                echo number_format($data['harga'],0,",",".");
+              } else {
+                echo '<del>'.number_format($data['harga'],0,",",".").'</del> ke ';
+                $diskon       = $data['harga'] * $data['diskon']/100;
+                $harga_diskon = $data['harga'] - $diskon;
+                echo number_format($harga_diskon,0,",",".");
+              } ?> 
+	            </td>
+	            <td><?php echo $data['tot_yg_dibeli']; ?></td>
+	            <td><?php echo datetimeFormat::TanggalIndo($data['tanggal']); ?></td>
+	            <td>
+	            	<a class="waves-effect waves-light btn red darken-1 confirm-delete-stok" style="cursor: pointer;">Hapus Stok</a>
+	            	<a class="waves-effect waves-light btn lime darken-1 confirm-delete-data" style="cursor: pointer;">Hapus Data</a>
+	            </td>
+	          </tr>
+	          <script type="text/javascript">
+				      $('.confirm-delete-stok').on('click', function(e) {
+				        Swal.fire({
+				          title: 'Anda Yakin?',
+				          text: "Menghapus Barang <?php echo $data['nama_barang']; ?>, Jumlah Stok Barang Juga Akan Bertambah Di List Barang!",
+				          icon: 'warning',
+				          showCancelButton: true,
+				          confirmButtonColor: '#3085d6',
+				          cancelButtonColor: '#d33',
+				          confirmButtonText: 'Ya, Yakin!'
+				        }).then((result) => {
+				          if (result.isConfirmed) {
+				            window.location.href = "<?php echo 'func/penjualan_func.php?action=delete-stok&id='.$data['id'].'&id_barang='.$data['id_barang'] ?>";
+				          }
+				        })
+				      });
+
+				      $('.confirm-delete-data').on('click', function(e) {
+				        Swal.fire({
+				          title: 'Anda Yakin?',
+				          text: "Menghapus Barang <?php echo $data['nama_barang']; ?>, Jumlah Stok Barang Tidak Akan Bertambah Di List Barang!",
+				          icon: 'warning',
+				          showCancelButton: true,
+				          confirmButtonColor: '#3085d6',
+				          cancelButtonColor: '#d33',
+				          confirmButtonText: 'Ya, Yakin!'
+				        }).then((result) => {
+				          if (result.isConfirmed) {
+				            window.location.href = "<?php echo 'func/penjualan_func.php?action=delete-data&id='.$data['id'] ?>";
+				          }
+				        })
+				      });
+				    </script>
+	        <?php $no++; } ?>
+	        </tbody>
+	      </table>
 			</div>
 		</div>
 	</section>

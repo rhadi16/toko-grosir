@@ -33,6 +33,9 @@ nav .brand-logo {
 	background: linear-gradient(70deg, #eeeeee, #fafafa);
 	padding: 10px 0 0 0;
 }
+#pegawai .pencarian-barang .card-panel {
+	padding: 15px 0;
+}
 #pegawai .list .card-panel .img,
 #list-barang .list .card-panel .img {
 	width: 60%;
@@ -85,6 +88,17 @@ nav .brand-logo {
 #list-barang input[type=number]:not(.browser-default).validate + label {
 	width: 99%;
 }
+#pegawai .pagination li.active {
+	background-color: #1565c0;
+}
+#pegawai .parent-btn-paginasi {
+	display: flex;
+	justify-content: center;
+}
+#pegawai .pagination {
+	width: unset;
+	margin-bottom: 40px;
+}
 
 /* list-barang.php */
 #list-barang .pencarian-barang .card {
@@ -92,7 +106,9 @@ nav .brand-logo {
 	background: linear-gradient(70deg, #eeeeee, #fafafa);
 	margin-top: 20px;
 }
-#list-barang .pencarian-barang .card .row {
+#list-barang .pencarian-barang .card .row,
+#pegawai .pencarian-barang .card-panel .row,
+#pegawai .list .row {
 	margin-bottom: unset;
 }
 #list-barang .pagination li.active {
@@ -110,8 +126,9 @@ nav .brand-logo {
 
 /* Halaman Utama */
 #hal-utama .card-panel {
-	margin-top: 35px;
+	margin: 35px auto;
 	padding-bottom: 14px;
+	width: 300px;
 }
 #hal-utama .card-panel .row {
 	margin-bottom: unset;
@@ -132,10 +149,43 @@ nav .brand-logo {
     line-height: unset;
     padding: 5px 16px;
 }
+#pilih-admin h4,
+#cetak-beberapa-pembelian h4,
+#cetak-beberapa-penjualan h4 {
+	font-weight: 500;
+	font-size: 2rem;
+	text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+}
+#pilih-admin .modal-footer a,
+#pilih-admin .modal-footer button,
+#cetak-beberapa-pembelian .modal-footer a,
+#cetak-beberapa-pembelian .modal-footer button,
+#cetak-beberapa-penjualan .modal-footer a,
+#cetak-beberapa-penjualan .modal-footer button {
+	margin: 5px;
+}
+#hal-utama #cetak-beberapa-pembelian,
+#hal-utama #cetak-beberapa-penjualan {
+	overflow: unset;
+}
+#hal-utama #cetak-beberapa-pembelian .modal-content,
+#hal-utama #cetak-beberapa-penjualan .modal-content {
+	padding: 10px 10px 0 10px;
+}
+#hal-utama #cetak-beberapa-pembelian .modal-content.datepicker-container,
+#hal-utama #cetak-beberapa-penjualan .modal-content.datepicker-container {
+	padding: 0;
+}
+#hal-utama #cetak-beberapa-pembelian .modal-content .row,
+#hal-utama #cetak-beberapa-penjualan .modal-content .row {
+	margin-bottom: unset;
+}
+#hal-utama div.modal.datepicker-modal.open {
+	width: 100%;
+}
 
 @media only screen and (max-width: 992px) {
 	/* Pegawai.php */
-
 }
 
 @media only screen and (max-width: 576px) {
@@ -143,6 +193,9 @@ nav .brand-logo {
 		font-size: 1.5rem;
 	}
 	/* pegawai.php & list-barang.php*/
+	#hal-utama .card-panel {
+		width: 100%;
+	}
 	#pegawai #tambah-pegawai .modal-content h4,
 	#pegawai .edit-pegawai .modal-content h4,
 	#list-barang #tambah-barang .modal-content h4,
@@ -154,5 +207,10 @@ nav .brand-logo {
 	#list-barang #tambah-barang .modal-content,
 	#list-barang .edit-barang .modal-content {
 		padding: 10px 10px 0 10px;
+	}
+	#pilih-admin h4,
+	#cetak-beberapa-pembelian h4,
+	#cetak-beberapa-penjualan h4 {
+		font-size: 1.5rem;
 	}
 }

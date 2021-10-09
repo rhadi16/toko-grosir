@@ -109,7 +109,19 @@ div.ui-state-active {
 #pembelian .list-barang .btn-delete a,
 #penjualan .list-penjualan .btn-delete a {
   margin: 5px;
+  z-index: unset;
 }
+#pembelian .list-barang .pencarian-barang .card-panel,
+#penjualan .list-penjualan .pencarian-barang .card-panel {
+  padding: 15px 0;
+}
+#pembelian .select-wrapper input.select-dropdown,
+#pembelian .pencarian-barang button,
+#penjualan .select-wrapper input.select-dropdown,
+#penjualan .pencarian-barang button {
+  z-index: unset;
+}
+
 @media only screen and (max-width: 992px) {
   .ui-autocomplete {
     max-width: 190px;

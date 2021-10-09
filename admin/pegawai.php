@@ -9,8 +9,8 @@
   $view   = "pegawai.php";
 
   $column = [
-              'value'  => ['nama', 'nik'],
-              'label'  => ['NAMA', 'NIK'],
+              'value'  => ['nama', 'jabatan'],
+              'label'  => ['Nama Pegawai', 'Jabatan'],
               'type'   => ['text', 'text']
             ];
 
@@ -66,6 +66,11 @@
 		  </div>
 
 			<div class="list">
+				<div class="container pencarian-barang">
+	        <div class="card-panel">
+	          <?php include('../paginasi/pencarian.php'); ?>
+	        </div>
+	      </div>
 				<div class="row parent">
 					<?php 
 						include('../paginasi/main-paginasi.php');
@@ -176,6 +181,7 @@
 				  </div>
 				<?php } ?>
 				</div>
+				<?php include('../paginasi/btn-paginasi.php'); ?>
 			</div>
 		</div>
 	</section>

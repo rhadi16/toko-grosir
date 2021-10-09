@@ -7,14 +7,32 @@
 			    <div class="col s12">
 			      <div class="card-panel blue darken-2 center-align">
 			        <div class="row">
-			        	<div class="col s12 m6">
+			        	<div class="col s12">
 			        		<a class="waves-effect waves-light btn modal-trigger deep-orange darken-1" href="#pilih-admin">Pilih Admin Yang Bertugas</a>
 			        	</div>
-			        	<div class="col s12 m6">
+			        	<div class="col s12">
 			        		<a class="waves-effect waves-light btn brown darken-1" href="pegawai.php">Kelola Pegawai</a>
 			        	</div>
-			        	<div class="col s12 m6">
+			        	<div class="col s12">
 			        		<a class="waves-effect waves-light btn brown darken-1" href="list-barang.php">Kelola Barang</a>
+			        	</div>
+			        	<div class="col s12">
+			        		<a class="waves-effect waves-light btn brown darken-1" href="pembelian.php">Kelola Pembelian</a>
+			        	</div>
+			        	<div class="col s12">
+			        		<a class="waves-effect waves-light btn brown darken-1" href="penjualan.php">Kelola Penjualan</a>
+			        	</div>
+			        	<div class="col s12">
+			        		<a class="waves-effect waves-light btn brown darken-1" href="cetak-semua-pembelian.php" target="_blank">Cetak Semua Barang Masuk</a>
+			        	</div>
+			        	<div class="col s12">
+			        		<a class="waves-effect waves-light btn brown darken-1 modal-trigger" href="#cetak-beberapa-pembelian">Cetak Beberapa Barang Masuk</a>
+			        	</div>
+			        	<div class="col s12">
+			        		<a class="waves-effect waves-light btn brown darken-1" href="cetak-semua-penjualan.php" target="_blank">Cetak Semua Penjualan</a>
+			        	</div>
+			        	<div class="col s12">
+			        		<a class="waves-effect waves-light btn brown darken-1 modal-trigger" href="#cetak-beberapa-penjualan">Cetak Beberapa Penjualan</a>
 			        	</div>
 			        </div>
 			      </div>
@@ -22,34 +40,89 @@
 			  </div>
 			</div>
 		</div>
+
+		<!-- Modal Structure -->
+	  <div id="pilih-admin" class="modal">
+	  	<form action="func/index_func.php?action=admin" method="post">
+		    <div class="modal-content">
+		      <h4 class="center-align">Pemilihan Admin</h4>
+		      <label>Pilih Admin</label>
+				  <select class="browser-default" name="id_nama">
+				    <option value="" disabled selected>-- Pilih Admin --</option>
+				    <?php 
+				    	$qry = "SELECT * FROM pegawai";
+
+				    	$dt = mysqli_query($mysqli, $qry);
+
+							while($data = mysqli_fetch_array($dt)){
+				    ?>
+				    		<option value="<?php echo $data['id'].'||'.$data['nama']; ?>">
+				    			<?php echo $data['nama']; ?>
+				    		</option>
+				    <?php } ?>
+				  </select>
+		    </div>
+		    <div class="modal-footer">
+		      <a class="waves-effect waves-light btn modal-close red darken-4"><i class="material-icons left">close</i>Tutup</a>
+					<button type="submit" class="waves-effect waves-light btn light-green accent-4"><i class="material-icons left">check</i>Pilih</button>
+		    </div>
+	    </form>
+	  </div>
+
+	  <!-- Modal Structure -->
+	  <div id="cetak-beberapa-pembelian" class="modal">
+	  	<form action="cetak-beberapa-pembelian.php" method="post" target="_blank">
+		    <div class="modal-content">
+		      <h4 class="center-align">Cetak Laporan Barang Masuk</h4>
+		      <div class="row">
+		      	<div class="input-field col s12 m6">
+		          <input type="text" class="datepicker" name="tanggal_awal">
+		          <label for="from">Dari Tanggal</label>
+		        </div>
+		        <div class="input-field col s12 m6">
+		          <input type="text" class="datepicker" name="tanggal_akhir">
+		          <label for="to">Sampai Tanggal</label>
+		        </div>
+		      </div>
+		    </div>
+		    <div class="modal-footer">
+		      <a class="waves-effect waves-light btn modal-close red darken-4"><i class="material-icons left">close</i>Tutup</a>
+					<button type="submit" class="waves-effect waves-light btn light-green accent-4"><i class="material-icons left">local_printshop</i>cetak</button>
+		    </div>
+	  	</form>
+	  </div>
+
+	  <!-- Modal Structure -->
+	  <div id="cetak-beberapa-penjualan" class="modal">
+	  	<form action="cetak-beberapa-penjualan.php" method="post" target="_blank">
+		    <div class="modal-content">
+		      <h4 class="center-align">Cetak Laporan Penjualan</h4>
+		      <div class="row">
+		      	<div class="input-field col s12 m6">
+		          <input type="text" class="datepicker" name="tanggal_awal">
+		          <label for="from">Dari Tanggal</label>
+		        </div>
+		        <div class="input-field col s12 m6">
+		          <input type="text" class="datepicker" name="tanggal_akhir">
+		          <label for="to">Sampai Tanggal</label>
+		        </div>
+		      </div>
+		    </div>
+		    <div class="modal-footer">
+		      <a class="waves-effect waves-light btn modal-close red darken-4"><i class="material-icons left">close</i>Tutup</a>
+					<button type="submit" class="waves-effect waves-light btn light-green accent-4"><i class="material-icons left">local_printshop</i>cetak</button>
+		    </div>
+	  	</form>
+	  </div>
 	</section>
 
-	<!-- Modal Structure -->
-  <div id="pilih-admin" class="modal">
-  	<form action="func/index_func.php?action=admin" method="post">
-	    <div class="modal-content">
-	      <h4>Pemilihan Admin</h4>
-	      <label>Pilih Admin</label>
-			  <select class="browser-default" name="id_nama">
-			    <option value="" disabled selected>-- Pilih Admin --</option>
-			    <?php 
-			    	$qry = "SELECT * FROM pegawai";
-
-			    	$dt = mysqli_query($mysqli, $qry);
-
-						while($data = mysqli_fetch_array($dt)){
-			    ?>
-			    		<option value="<?php echo $data['id'].'||'.$data['nama']; ?>">
-			    			<?php echo $data['nama']; ?>
-			    		</option>
-			    <?php } ?>
-			  </select>
-	    </div>
-	    <div class="modal-footer">
-	      <a class="waves-effect waves-light btn modal-close red darken-4"><i class="material-icons left">close</i>Tutup</a>
-				<button type="submit" class="waves-effect waves-light btn light-green accent-4"><i class="material-icons left">check</i>Pilih</button>
-	    </div>
-    </form>
-  </div>
 
 <?php include('template/footer.php'); ?>
+
+<script type="text/javascript">
+	$(document).ready(function(){
+    $('.datepicker').datepicker({
+    	format: 'yyyy-mm-dd'
+    });
+  });
+</script>
