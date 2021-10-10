@@ -14,25 +14,28 @@
 			        		<a class="waves-effect waves-light btn brown darken-1" href="pegawai.php">Kelola Pegawai</a>
 			        	</div>
 			        	<div class="col s12">
-			        		<a class="waves-effect waves-light btn brown darken-1" href="list-barang.php">Kelola Barang</a>
+			        		<a class="waves-effect waves-light btn blue-grey lighten-2" href="list-barang.php">Kelola Barang</a>
 			        	</div>
 			        	<div class="col s12">
-			        		<a class="waves-effect waves-light btn brown darken-1" href="pembelian.php">Kelola Pembelian</a>
+			        		<a class="waves-effect waves-light btn amber darken-1" href="pembelian.php">Kelola Pembelian</a>
 			        	</div>
 			        	<div class="col s12">
-			        		<a class="waves-effect waves-light btn brown darken-1" href="penjualan.php">Kelola Penjualan</a>
+			        		<a class="waves-effect waves-light btn yellow darken-1" href="penjualan.php">Kelola Penjualan</a>
 			        	</div>
 			        	<div class="col s12">
-			        		<a class="waves-effect waves-light btn brown darken-1" href="cetak-semua-pembelian.php" target="_blank">Cetak Semua Barang Masuk</a>
+			        		<a class="waves-effect waves-light btn lime darken-1" href="cetak-semua-pembelian.php" target="_blank">Cetak Semua Barang Masuk</a>
 			        	</div>
 			        	<div class="col s12">
-			        		<a class="waves-effect waves-light btn brown darken-1 modal-trigger" href="#cetak-beberapa-pembelian">Cetak Beberapa Barang Masuk</a>
+			        		<a class="waves-effect waves-light btn light-green darken-1 modal-trigger" href="#cetak-beberapa-pembelian">Cetak Beberapa Barang Masuk</a>
 			        	</div>
 			        	<div class="col s12">
-			        		<a class="waves-effect waves-light btn brown darken-1" href="cetak-semua-penjualan.php" target="_blank">Cetak Semua Penjualan</a>
+			        		<a class="waves-effect waves-light btn green darken-1" href="cetak-semua-penjualan.php" target="_blank">Cetak Semua Penjualan</a>
 			        	</div>
 			        	<div class="col s12">
-			        		<a class="waves-effect waves-light btn brown darken-1 modal-trigger" href="#cetak-beberapa-penjualan">Cetak Beberapa Penjualan</a>
+			        		<a class="waves-effect waves-light btn teal darken-1 modal-trigger" href="#cetak-beberapa-penjualan">Cetak Beberapa Penjualan</a>
+			        	</div>
+			        	<div class="col s12">
+			        		<a class="waves-effect waves-light btn light-blue darken-1" href="cetak-penghasilan.php" target="_blank">Cetak Pengahasilan</a>
 			        	</div>
 			        </div>
 			      </div>

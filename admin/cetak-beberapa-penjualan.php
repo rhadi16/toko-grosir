@@ -59,7 +59,7 @@
 	$html .= '
 		  <body>
 				<main>
-					<h1>LAPORAN SEMUA Terjual <br>TOKO MEGA TONY <br>TANGGAL '. datetimeFormat::TanggalIndo($tanggal_awal) .' - '. datetimeFormat::TanggalIndo($tanggal_akhir) .'</h1>
+					<h1>LAPORAN SEMUA TERJUAL <br>TOKO MEGA TONY <br>TANGGAL '. datetimeFormat::TanggalIndo($tanggal_awal) .' - '. datetimeFormat::TanggalIndo($tanggal_akhir) .'</h1>
 
 					<table>
 						<tr>
