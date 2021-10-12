@@ -107,7 +107,33 @@
 		                    <td class="center-align">
 		                    	<a class="waves-effect waves-light btn modal-trigger lime darken-1" href="#edit-pegawai<?php echo $data['id']; ?>">edit</a>
 		                    	<a class="waves-effect waves-light btn red darken-1 confirm-delete" style="cursor: pointer;">hapus</a>
+		                    	<?php 
+				    								$tu = mysqli_query($mysqli, "SELECT * FROM utenti WHERE email = '".$data['email']."'");
+				    								$du = mysqli_fetch_array($tu);
 
+				    								if ($du['email'] == $data['email']) {
+		                    	?>
+		                    		<a class="waves-effect waves-light btn red darken-4 delete-account" style="cursor: pointer;">hapus akun</a>
+		                    		<script type="text/javascript">
+												      $('.delete-account').on('click', function(e) {
+												        Swal.fire({
+												          title: 'Anda Yakin?',
+												          text: "Ingin Menghapus Akun <?php echo $data['email']; ?>!",
+												          icon: 'warning',
+												          showCancelButton: true,
+												          confirmButtonColor: '#3085d6',
+												          cancelButtonColor: '#d33',
+												          confirmButtonText: 'Ya, Yakin!'
+												        }).then((result) => {
+												          if (result.isConfirmed) {
+												            window.location.href = "<?php echo 'func/registersf_func.php?action=delete&email='.$data['email'] ?>";
+												          }
+												        })
+												      });
+												    </script>
+		                    	<?php } else { ?>
+		                    		<a class="waves-effect waves-light btn modal-trigger green darken-3" href="#tambah-akun<?php echo $data['id']; ?>">Tambah Akun</a>
+		                    	<?php } ?>
 		                    	<script type="text/javascript">
 											      $('.confirm-delete').on('click', function(e) {
 											        Swal.fire({
@@ -179,6 +205,33 @@
 					    </div>
 					  </form>
 				  </div>
+
+				  <!-- Modal Structure -->
+				  <div id="tambah-akun<?php echo $data['id']; ?>" class="modal edit-pegawai">
+					  <form action="func/register.php" enctype="multipart/form-data" method="post">
+					    <div class="modal-content">
+					      <h4>Tambah Akun</h4>
+					      <input type="hidden" name="id" value="<?php echo $data['id']; ?>">
+						      <div class="row">
+						        <div class="input-field col s12">
+						          <i class="material-icons prefix">email</i>
+						          <input id="email" type="email" class="validate" name="email" required value="<?php echo $data['email']; ?>">
+						          <label for="email">Email</label>
+						        </div>
+						        <div class="input-field col s12">
+						          <i class="material-icons prefix">lock</i>
+						          <input id="password<?php echo $data['id']; ?>" type="password" class="validate" name="password" pattern=".{8,}" minlength="8" required>
+						          <label for="password<?php echo $data['id']; ?>">Masukkan Password</label>
+						        </div>
+						      </div>
+					    </div>
+					    <div class="modal-footer">
+					      <a class="waves-effect waves-light btn modal-close red darken-4"><i class="material-icons left">close</i>Tutup</a>
+					      <input type="hidden" name="register" value="register">
+					      <button type="submit" class="waves-effect waves-light btn light-green accent-4"><i class="material-icons left">add</i>Ubah</button>
+					    </div>
+					  </form>
+				  </div>
 				<?php } ?>
 				</div>
 				<?php include('../paginasi/btn-paginasi.php'); ?>
@@ -201,6 +254,12 @@
 	<?php } elseif ($desc == "success-del") { ?>
 		<div class="desc-in" data-flashdata="<?php echo $desc; ?>"></div>
 	<?php } elseif ($desc == "failed-del") { ?>
+		<div class="desc-in" data-flashdata="<?php echo $desc; ?>"></div>
+	<?php } elseif ($desc == "short-pass") { ?>
+		<div class="desc-in" data-flashdata="<?php echo $desc; ?>"></div>
+	<?php } elseif ($desc == "email-ready") { ?>
+		<div class="desc-in" data-flashdata="<?php echo $desc; ?>"></div>
+	<?php } elseif ($desc == "succes-regis") { ?>
 		<div class="desc-in" data-flashdata="<?php echo $desc; ?>"></div>
 	<?php } ?>
 
@@ -242,6 +301,24 @@
 	      'Gagal!',
 	      'Anda Gagal Melakukan Penghapusan Data',
 	      'error'
+	    )
+	  } else if (desc_in == "short-pass") {
+	  	Swal.fire(
+	      'Gagal!',
+	      'Password Kurang Dari 8 Karakter',
+	      'error'
+	    )
+	  } else if (desc_in == "email-ready") {
+	  	Swal.fire(
+	      'Gagal!',
+	      'Email Telah Terdaftar',
+	      'error'
+	    )
+	  } else if (desc_in == "succes-regis") {
+	  	Swal.fire(
+	      'Berhasil!',
+	      'Admin Telah Ditambahkan',
+	      'success'
 	    )
 	  }
 

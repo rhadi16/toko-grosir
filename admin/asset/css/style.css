@@ -57,7 +57,7 @@ nav .brand-logo {
 	height: unset;
 	line-height: unset;
 	padding: 3px;
-	margin: 0 3px;
+	margin: 3px 3px;
 	border-radius: 5px;
 	text-transform: capitalize;
 }
