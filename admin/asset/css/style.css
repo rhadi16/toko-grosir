@@ -82,7 +82,7 @@ nav .brand-logo {
     line-height: 36px;
     padding: 0 10px;
 }
-#pegawai input[type=text]:not(.browser-default).validate + label,
+/*#pegawai input[type=text]:not(.browser-default).validate + label,*/
 #list-barang input[type=text]:not(.browser-default).validate + label,
 #pegawai input[type=number]:not(.browser-default).validate + label,
 #list-barang input[type=number]:not(.browser-default).validate + label {
