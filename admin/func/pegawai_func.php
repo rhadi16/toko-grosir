@@ -47,6 +47,11 @@
 		// Set path folder tempat menyimpan gambarnya
 		$path = "../foto/".$foto;
 
+		$email_lama = $_POST['email_lama'];
+
+		$dt1 = mysqli_query($mysqli, "SELECT * FROM utenti WHERE email = '$email_lama'");
+        $d1  = mysqli_fetch_array($dt1);
+
 		if (move_uploaded_file($tmp_file, $path)) {
 			$result = mysqli_query($mysqli, "UPDATE pegawai
 				  									SET 
@@ -59,7 +64,10 @@
 				  									   WHERE id = $id
 				  									") or die(mysqli_error($mysqli));
 
-			if ($result) {
+			$result1= mysqli_query($mysqli, "UPDATE utenti SET email = '$email' WHERE email = '$email_lama'") 
+											or die(mysqli_error($mysqli));
+
+			if ($result && $result1) {
 				$hapus_foto = unlink("../foto/".$file_name_sebelum);
 				echo '<script language="javascript"> window.location.href = "../pegawai.php?desc=success-ed" </script>';
 			} else {
@@ -77,7 +85,10 @@
 				  									   WHERE id = $id
 				  									") or die(mysqli_error($mysqli));
 
-			if ($result) {
+			$result1= mysqli_query($mysqli, "UPDATE utenti SET email = '$email' WHERE email = '$email_lama'") 
+											or die(mysqli_error($mysqli));
+
+			if ($result && $result1) {
 				echo '<script language="javascript"> window.location.href = "../pegawai.php?desc=success-ed" </script>';
 			} else {
 				echo '<script language="javascript"> window.location.href = "../pegawai.php?desc=failed-ed" </script>';

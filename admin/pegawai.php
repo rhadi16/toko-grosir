@@ -126,7 +126,7 @@
 												          confirmButtonText: 'Ya, Yakin!'
 												        }).then((result) => {
 												          if (result.isConfirmed) {
-												            window.location.href = "<?php echo 'func/registersf_func.php?action=delete&email='.$data['email'] ?>";
+												            window.location.href = "<?php echo 'func/register_func.php?action=delete&email='.$data['email'] ?>";
 												          }
 												        })
 												      });
@@ -134,6 +134,7 @@
 		                    	<?php } else { ?>
 		                    		<a class="waves-effect waves-light btn modal-trigger green darken-3" href="#tambah-akun<?php echo $data['id']; ?>">Tambah Akun</a>
 		                    	<?php } ?>
+
 		                    	<script type="text/javascript">
 											      $('.confirm-delete').on('click', function(e) {
 											        Swal.fire({
@@ -180,6 +181,7 @@
 						        <div class="input-field col s12">
 						          <i class="material-icons prefix">email</i>
 						          <input id="email" type="email" class="validate" name="email" required value="<?php echo $data['email']; ?>">
+						          <input type="hidden" name="email_lama" value="<?php echo $data['email']; ?>">
 						          <label for="email">Email</label>
 						        </div>
 						        <div class="input-field col s12">
