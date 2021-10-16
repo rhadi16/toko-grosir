@@ -1,4 +1,7 @@
-<?php include('template/header.php'); ?>
+<?php 
+	include('template/header.php');
+	include 'asset/datetime/datetimeFormat.php';
+?>
 
 <?php 
 
@@ -62,6 +65,10 @@
 				        <div class="input-field col s12">
 				          <input id="unit" type="number" class="validate" name="unit" required>
 				          <label for="unit">unit(1 pcs/1 liter/1 kg)</label>
+				        </div>
+				        <div class="input-field col s12">
+				          <input id="tgl_expire" type="date" class="validate" name="tgl_expire" required>
+				          <label for="tgl_expire">Tanggal Expire</label>
 				        </div>
 				        <div class="file-field col s12 input-field">
 						      <div class="btn">
@@ -142,6 +149,10 @@
 		                    <td class="center-align"><?php echo $data['diskon']; ?>%</td>
 		                  </tr>
 		                  <tr>
+		                    <th>Tanggal Expire</th>
+		                    <td class="center-align"><?php echo datetimeFormat::TanggalIndo($data['tgl_expire']); ?></td>
+		                  </tr>
+		                  <tr>
 		                    <th>aksi</th>
 		                    <td class="center-align">
 		                    	<a class="waves-effect waves-light btn modal-trigger lime darken-1" href="#edit-barang<?php echo $data['id_barang']; ?>">edit</a>
@@ -214,6 +225,10 @@
 						        <div class="input-field col s12">
 						          <input id="unit" type="number" class="validate" name="unit" required value="<?php echo $data['unit']; ?>">
 						          <label for="unit">unit(1 pcs/1 liter/1 kg)</label>
+						        </div>
+						        <div class="input-field col s12">
+						          <input id="tgl_expire" type="date" class="validate" name="tgl_expire" required value="<?php echo $data['tgl_expire']; ?>">
+						          <label for="tgl_expire">Tanggal Expire</label>
 						        </div>
 						        <div class="file-field col s12 input-field">
 								      <div class="btn">

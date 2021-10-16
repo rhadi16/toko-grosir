@@ -14,6 +14,7 @@
 		$diskon 	 = $_POST['diskon'];
 		$satuan 	 = $_POST['satuan'];
 		$unit 		 = $_POST['unit'];
+		$tgl_expire  = $_POST['tgl_expire'];
 		// Ambil Data yang Dikirim dari Form
 		$nama_file = $_FILES['file_name']['name'];
 		$tmp_file  = $_FILES['file_name']['tmp_name'];
@@ -24,8 +25,8 @@
 		$path = "../foto_brg/".$foto;
 
 		if (move_uploaded_file($tmp_file, $path)) {
-			$result = mysqli_query($mysqli, "INSERT INTO list_barang (id_barang, nama_barang, harga, stok, promo, diskon, satuan, unit, foto) 
-											 VALUES(null, '$nama_barang', '$harga', '$stok', '$promo', '$diskon', '$satuan', '$unit', '$foto')") or die(mysqli_error($mysqli));
+			$result = mysqli_query($mysqli, "INSERT INTO list_barang (id_barang, nama_barang, harga, stok, promo, diskon, satuan, unit, tgl_expire, 							 foto) 
+											 VALUES(null, '$nama_barang', '$harga', '$stok', '$promo', '$diskon', '$satuan', '$unit', '$tgl_expire', '$foto')") or die(mysqli_error($mysqli));
 
 			if ($result) {
 				echo '<script language="javascript"> window.location.href = "../list-barang.php?desc=success-in" </script>';
@@ -43,6 +44,7 @@
 		$diskon 	 = $_POST['diskon'];
 		$satuan 	 = $_POST['satuan'];
 		$unit 		 = $_POST['unit'];
+		$tgl_expire  = $_POST['tgl_expire'];
 		$file_name_sebelum = $_POST['file_name_sebelum'];
 		// Ambil Data yang Dikirim dari Form
 		$nama_file = $_FILES['file_name']['name'];
@@ -64,6 +66,7 @@
 				  									   diskon      = '$diskon',
 				  									   satuan      = '$satuan',
 				  									   unit        = '$unit',
+				  									   tgl_expire  = '$tgl_expire',
 				  									   foto    	   = '$foto'
 				  									   WHERE id_barang = $id_barang
 				  									") or die(mysqli_error($mysqli));
@@ -85,6 +88,7 @@
 				  									   diskon      = '$diskon',
 				  									   satuan      = '$satuan',
 				  									   unit        = '$unit',
+				  									   tgl_expire  = '$tgl_expire',
 				  									   foto    	   = '$file_name_sebelum'
 				  									   WHERE id_barang = $id_barang
 				  									") or die(mysqli_error($mysqli));

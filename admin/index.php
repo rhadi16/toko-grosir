@@ -37,6 +37,9 @@
 			        	<div class="col s12">
 			        		<a class="waves-effect waves-light btn light-blue darken-1" href="cetak-penghasilan.php" target="_blank">Cetak Pengahasilan</a>
 			        	</div>
+			        	<div class="col s12">
+			        		<a class="waves-effect waves-light btn indigo darken-1" href="saran-diskon.php">Saran Untuk Menentukan Diskon</a>
+			        	</div>
 			        </div>
 			      </div>
 			    </div>

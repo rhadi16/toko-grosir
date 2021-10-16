@@ -2,16 +2,21 @@ nav .brand-logo {
 	font-weight: bold;
 	text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.3);
 }
-/* Pegawai.php & liat-barang.php */
+/* Pegawai.php & liat-barang.php & saran-diskon*/
 #pegawai .title,
-#list-barang .title {
+#list-barang .title,
+#saran-diskon .title {
 	text-align: center;
 	font-size: 2.5rem;
 	font-weight: 500;
 	text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
 }
+#saran-diskon .title {
+	line-height: 2.6rem;
+}
 #pegawai .list,
-#list-barang .list {
+#list-barang .list,
+#saran-diskon .list {
 	margin-top: 30px;
 }
 #pegawai .list .row.parent,
@@ -123,7 +128,6 @@ nav .brand-logo {
 	margin-bottom: 40px;
 }
 
-
 /* Halaman Utama */
 #hal-utama .card-panel {
 	margin: 35px auto;
@@ -184,14 +188,36 @@ nav .brand-logo {
 	width: 100%;
 }
 
+/* saran-diskon.php */
+#saran-diskon .pencarian-barang .card {
+	padding: 15px 0;
+	background: linear-gradient(70deg, #eeeeee, #fafafa);
+	margin-top: 20px;
+}
+#saran-diskon .pencarian-barang .card .row {
+	margin-bottom: unset;
+}
+#saran-diskon .list .card-panel {
+	padding: 0;
+}
+
 @media only screen and (max-width: 992px) {
-	/* Pegawai.php */
+	/* saran-diskon.php */
+	#saran-diskon .title {
+		font-size: 1.9rem;
+	}
 }
 
 @media only screen and (max-width: 576px) {
 	nav .brand-logo {
 		font-size: 1.5rem;
 	}
+	/* saran-diskon.php */
+	#saran-diskon .title {
+		font-size: 1.4rem;
+		line-height: 1.9rem;
+	}
+
 	/* pegawai.php & list-barang.php*/
 	#hal-utama .card-panel {
 		width: 100%;
