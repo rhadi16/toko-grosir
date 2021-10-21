@@ -150,7 +150,7 @@
 		                  </tr>
 		                  <tr>
 		                    <th>Tanggal Expire</th>
-		                    <td class="center-align"><?php echo datetimeFormat::TanggalIndo1($data['tgl_expire']); ?></td>
+		                    <td class="center-align"><?php echo datetimeFormat::TanggalIndo($data['tgl_expire']); ?></td>
 		                  </tr>
 		                  <tr>
 		                    <th>aksi</th>
@@ -256,7 +256,7 @@
 	</section>
 
 	<?php
-    // error_reporting(0);
+    error_reporting(0);
     $desc = $_GET['desc']; 
     if ($desc == "success-in") {
 	?>

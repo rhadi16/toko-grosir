@@ -27,7 +27,7 @@ CREATE TABLE IF NOT EXISTS `admin` (
 -- Dumping data for table mega-tony.admin: ~1 rows (approximately)
 /*!40000 ALTER TABLE `admin` DISABLE KEYS */;
 INSERT INTO `admin` (`id`, `id_nama`) VALUES
-	(1, 1);
+  (1, 1);
 /*!40000 ALTER TABLE `admin` ENABLE KEYS */;
 
 -- Dumping structure for table mega-tony.auth_tokens
@@ -64,7 +64,7 @@ CREATE TABLE IF NOT EXISTS `list_barang` (
 -- Dumping data for table mega-tony.list_barang: ~0 rows (approximately)
 /*!40000 ALTER TABLE `list_barang` DISABLE KEYS */;
 INSERT INTO `list_barang` (`id_barang`, `nama_barang`, `harga`, `stok`, `promo`, `diskon`, `satuan`, `unit`, `tgl_expire`, `foto`) VALUES
-	(1, 'Oreo Besar', 10000, 200, 'Beli 2 gratis 1', 10, 'pcs', 1, '2021-11-21', '1722776945oreo.jpg');
+  (1, 'Oreo Besar', 10000, 200, 'Beli 2 gratis 1', 10, 'pcs', 1, '2021-11-21', '1722776945oreo.jpg');
 /*!40000 ALTER TABLE `list_barang` ENABLE KEYS */;
 
 -- Dumping structure for table mega-tony.log_accessi
@@ -75,13 +75,14 @@ CREATE TABLE IF NOT EXISTS `log_accessi` (
   `data` timestamp NOT NULL DEFAULT current_timestamp(),
   `accesso` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
--- Dumping data for table mega-tony.log_accessi: ~1 rows (approximately)
+-- Dumping data for table mega-tony.log_accessi: ~3 rows (approximately)
 /*!40000 ALTER TABLE `log_accessi` DISABLE KEYS */;
 INSERT INTO `log_accessi` (`id`, `ip`, `mail_immessa`, `data`, `accesso`) VALUES
-	(1, '::1', 'megatony@gmail.com', '2021-10-21 12:08:50', 1),
-	(2, '::1', 'megatony@gmail.com', '2021-10-21 13:05:30', 1);
+  (1, '::1', 'megatony@gmail.com', '2021-10-21 12:08:50', 1),
+  (2, '::1', 'megatony@gmail.com', '2021-10-21 13:05:30', 1),
+  (3, '::1', 'megatony@gmail.com', '2021-10-21 13:53:10', 1);
 /*!40000 ALTER TABLE `log_accessi` ENABLE KEYS */;
 
 -- Dumping structure for table mega-tony.pegawai
@@ -98,7 +99,7 @@ CREATE TABLE IF NOT EXISTS `pegawai` (
 -- Dumping data for table mega-tony.pegawai: ~1 rows (approximately)
 /*!40000 ALTER TABLE `pegawai` DISABLE KEYS */;
 INSERT INTO `pegawai` (`id`, `nama`, `jabatan`, `email`, `hp`, `foto`) VALUES
-	(1, 'Rhadi Indrawan', 'Leader', 'rhadi.indrawankkpi@gmail.com', '085255554789', '1218473185fotoku.jpg');
+  (1, 'Rhadi Indrawan', 'Leader', 'rhadi.indrawankkpi@gmail.com', '085255554789', '1218473185fotoku.jpg');
 /*!40000 ALTER TABLE `pegawai` ENABLE KEYS */;
 
 -- Dumping structure for table mega-tony.pembelian
@@ -109,12 +110,14 @@ CREATE TABLE IF NOT EXISTS `pembelian` (
   `stok_yg_dibeli` int(11) DEFAULT NULL,
   `stok_awal` int(11) DEFAULT NULL,
   `tot_stok` int(11) DEFAULT NULL,
-  `tanggal` datetime DEFAULT NULL,
+  `tanggal` date DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;
 
 -- Dumping data for table mega-tony.pembelian: ~0 rows (approximately)
 /*!40000 ALTER TABLE `pembelian` DISABLE KEYS */;
+INSERT INTO `pembelian` (`id`, `id_barang`, `harga_yg_dibeli`, `stok_yg_dibeli`, `stok_awal`, `tot_stok`, `tanggal`) VALUES
+  (1, 1, 20000, 2, 200, 202, '2021-10-21');
 /*!40000 ALTER TABLE `pembelian` ENABLE KEYS */;
 
 -- Dumping structure for table mega-tony.penjualan
@@ -125,10 +128,12 @@ CREATE TABLE IF NOT EXISTS `penjualan` (
   `tot_yg_dibeli` int(11) DEFAULT NULL,
   `tanggal` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;
 
 -- Dumping data for table mega-tony.penjualan: ~0 rows (approximately)
 /*!40000 ALTER TABLE `penjualan` DISABLE KEYS */;
+INSERT INTO `penjualan` (`id`, `id_barang`, `jum_yg_dibeli`, `tot_yg_dibeli`, `tanggal`) VALUES
+  (1, 1, 2, 18000, '2021-10-21 00:00:00');
 /*!40000 ALTER TABLE `penjualan` ENABLE KEYS */;
 
 -- Dumping structure for table mega-tony.utenti
@@ -147,7 +152,7 @@ CREATE TABLE IF NOT EXISTS `utenti` (
 -- Dumping data for table mega-tony.utenti: ~0 rows (approximately)
 /*!40000 ALTER TABLE `utenti` DISABLE KEYS */;
 INSERT INTO `utenti` (`id`, `email`, `password`, `stato`, `reset_selector`, `reset_code`, `data`, `last_update`) VALUES
-	(1, 'megatony@gmail.com', '$2y$12$flvnTQ0c13eXHRJAsl/66.Ynp..mjRY413kTB37hJ8/kzm2K/XXqq', 0, '', '', '2021-10-21 11:35:45', '2021-10-21 11:35:45');
+  (1, 'megatony@gmail.com', '$2y$12$flvnTQ0c13eXHRJAsl/66.Ynp..mjRY413kTB37hJ8/kzm2K/XXqq', 0, '', '', '2021-10-21 11:35:45', '2021-10-21 11:35:45');
 /*!40000 ALTER TABLE `utenti` ENABLE KEYS */;
 
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;

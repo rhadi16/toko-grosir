@@ -5,12 +5,12 @@ date_default_timezone_set('Asia/Makassar');
 class datetimeFormat {
 	
 
-	public function getTimeZone()
+	public static function getTimeZone()
 	{
 		return date_default_timezone_get();
 	}
 
-    public function TanggalIndo1($date){
+    public static function TanggalIndo($date){
     
           $BulanIndo = array( 
                             "Januari", 
@@ -27,14 +27,16 @@ class datetimeFormat {
                             "Desember"
                             );
 
-          $tgl = explode('-', $date);
+          $tahun = substr($date, 0, 4);
+          $bulan = substr($date, 5, 2);
+          $tgl   = substr($date, 8, 2);
 
-          $result = $tgl[2] . " " . $BulanIndo[(int)$tgl[1]] . " ". $tgl[0];
+          $result = $tgl . " " . $BulanIndo[(int)$bulan-1] . " ". $tahun;   
           return($result);
     
     }
 
-    public function getTanggal($date){
+    public static function getTanggal($date){
     
           $tgl   = substr($date, 8, 2);
    
@@ -42,7 +44,7 @@ class datetimeFormat {
     
     }
 
-    public function getBulan($date){
+    public static function getBulan($date){
     
           $bulan = substr($date, 5, 2);
    
@@ -50,7 +52,7 @@ class datetimeFormat {
     
     }
 
-    public function getTahun($date){
+    public static function getTahun($date){
     
           $tahun = substr($date, 0, 4);
    
@@ -58,7 +60,7 @@ class datetimeFormat {
     
     }
 
-    public function tampilhari($date){
+    public static function tampilhari($date){
         $day = date('D', strtotime($date));
         switch($day){
         case 'Sun':

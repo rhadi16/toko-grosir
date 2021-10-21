@@ -1,6 +1,6 @@
 <?php 
 	include('template/header.php'); 
-	include 'asset/datetime/datetimeFormat.php';
+	include('asset/datetime/datetimeFormat.php');
 ?>
 <link rel="stylesheet" type="text/css" href="asset/css/pembelian-penjualan-style.css">
 <?php 
