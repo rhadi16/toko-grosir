@@ -70,7 +70,7 @@ function random_ver ($n=10) {
 // ********************************
 // * IF LOGOUT REQUESTED          *
 // ********************************
-error_reporting(0);
+// error_reporting(0);
 if ($_GET["logout"]==1 && isset($_SESSION["user"])) {
     $del=$db->prepare("DELETE FROM auth_tokens WHERE userid = ".$_SESSION["user"]);
     $del->execute();

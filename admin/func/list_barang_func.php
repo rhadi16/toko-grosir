@@ -25,7 +25,7 @@
 		$path = "../foto_brg/".$foto;
 
 		if (move_uploaded_file($tmp_file, $path)) {
-			$result = mysqli_query($mysqli, "INSERT INTO list_barang (id_barang, nama_barang, harga, stok, promo, diskon, satuan, unit, tgl_expire, 							 foto) 
+			$result = mysqli_query($mysqli, "INSERT INTO list_barang (id_barang, nama_barang, harga, stok, promo, diskon, satuan, unit, tgl_expire, foto) 
 											 VALUES(null, '$nama_barang', '$harga', '$stok', '$promo', '$diskon', '$satuan', '$unit', '$tgl_expire', '$foto')") or die(mysqli_error($mysqli));
 
 			if ($result) {

@@ -10,7 +10,7 @@ class datetimeFormat {
 		return date_default_timezone_get();
 	}
 
-    public function TanggalIndo($date){
+    public function TanggalIndo1($date){
     
           $BulanIndo = array( 
                             "Januari", 
@@ -27,11 +27,9 @@ class datetimeFormat {
                             "Desember"
                             );
 
-          $tahun = substr($date, 0, 4);
-          $bulan = substr($date, 5, 2);
-          $tgl   = substr($date, 8, 2);
+          $tgl = explode('-', $date);
 
-          $result = $tgl . " " . $BulanIndo[(int)$bulan-1] . " ". $tahun;   
+          $result = $tgl[2] . " " . $BulanIndo[(int)$tgl[1]] . " ". $tgl[0];
           return($result);
     
     }
