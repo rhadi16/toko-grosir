@@ -24,7 +24,7 @@ CREATE TABLE IF NOT EXISTS `admin` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;
 
--- Dumping data for table mega-tony.admin: ~1 rows (approximately)
+-- Dumping data for table mega-tony.admin: ~0 rows (approximately)
 /*!40000 ALTER TABLE `admin` DISABLE KEYS */;
 INSERT INTO `admin` (`id`, `id_nama`) VALUES
   (1, 1);
@@ -77,12 +77,12 @@ CREATE TABLE IF NOT EXISTS `log_accessi` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
--- Dumping data for table mega-tony.log_accessi: ~3 rows (approximately)
+-- Dumping data for table mega-tony.log_accessi: ~2 rows (approximately)
 /*!40000 ALTER TABLE `log_accessi` DISABLE KEYS */;
 INSERT INTO `log_accessi` (`id`, `ip`, `mail_immessa`, `data`, `accesso`) VALUES
-  (1, '::1', 'megatony@gmail.com', '2021-10-21 12:08:50', 1),
-  (2, '::1', 'megatony@gmail.com', '2021-10-21 13:05:30', 1),
-  (3, '::1', 'megatony@gmail.com', '2021-10-21 13:53:10', 1);
+  (1, '::1', 'megatony@gmail.com', '2021-10-21 13:08:50', 1),
+  (2, '::1', 'megatony@gmail.com', '2021-10-21 14:05:30', 1),
+  (3, '::1', 'megatony@gmail.com', '2021-10-21 14:53:10', 1);
 /*!40000 ALTER TABLE `log_accessi` ENABLE KEYS */;
 
 -- Dumping structure for table mega-tony.pegawai
@@ -96,7 +96,7 @@ CREATE TABLE IF NOT EXISTS `pegawai` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;
 
--- Dumping data for table mega-tony.pegawai: ~1 rows (approximately)
+-- Dumping data for table mega-tony.pegawai: ~0 rows (approximately)
 /*!40000 ALTER TABLE `pegawai` DISABLE KEYS */;
 INSERT INTO `pegawai` (`id`, `nama`, `jabatan`, `email`, `hp`, `foto`) VALUES
   (1, 'Rhadi Indrawan', 'Leader', 'rhadi.indrawankkpi@gmail.com', '085255554789', '1218473185fotoku.jpg');
@@ -152,7 +152,7 @@ CREATE TABLE IF NOT EXISTS `utenti` (
 -- Dumping data for table mega-tony.utenti: ~0 rows (approximately)
 /*!40000 ALTER TABLE `utenti` DISABLE KEYS */;
 INSERT INTO `utenti` (`id`, `email`, `password`, `stato`, `reset_selector`, `reset_code`, `data`, `last_update`) VALUES
-  (1, 'megatony@gmail.com', '$2y$12$flvnTQ0c13eXHRJAsl/66.Ynp..mjRY413kTB37hJ8/kzm2K/XXqq', 0, '', '', '2021-10-21 11:35:45', '2021-10-21 11:35:45');
+  (1, 'megatony@gmail.com', '$2y$12$flvnTQ0c13eXHRJAsl/66.Ynp..mjRY413kTB37hJ8/kzm2K/XXqq', 0, '', '', '2021-10-21 12:35:45', '2021-10-21 12:35:45');
 /*!40000 ALTER TABLE `utenti` ENABLE KEYS */;
 
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
