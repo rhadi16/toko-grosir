@@ -22,6 +22,9 @@
               'label'  => ['Nama Barang'],
               'type'   => ['text']
             ];
+
+  $sel_qry = mysqli_query($mysqli, "SELECT * FROM penjualan");
+  $jum_data = mysqli_num_rows($sel_qry);
 ?>
 
 	<section id="penjualan">
@@ -71,6 +74,11 @@
 		</div>
 
 		<div class="container list-penjualan">
+			<?php 
+			 if ($jum_data == 0) {
+			?>
+				<h5 class="center-align title-form red-text text-darken-1">Penjualan Belum Ada</h5>	
+			<?php } else { ?>
 			<h5 class="center-align title-form">List Penjualan</h5>
       <div class="pencarian-barang">
         <div class="card-panel bg">
@@ -212,6 +220,7 @@
 	        </tbody>
 	      </table>
 			</div>
+		<?php } ?>
 		</div>
 	</section>
 

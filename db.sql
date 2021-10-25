@@ -21,13 +21,16 @@ USE `mega-tony`;
 CREATE TABLE IF NOT EXISTS `admin` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `id_nama` int(11) DEFAULT NULL,
+  `date` timestamp NULL DEFAULT current_timestamp(),
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4;
 
 -- Dumping data for table mega-tony.admin: ~0 rows (approximately)
 /*!40000 ALTER TABLE `admin` DISABLE KEYS */;
-INSERT INTO `admin` (`id`, `id_nama`) VALUES
-  (1, 1);
+INSERT INTO `admin` (`id`, `id_nama`, `date`) VALUES
+  (1, 1, '2021-10-25 09:03:19'),
+  (2, 3, '2021-10-25 09:03:45'),
+  (3, 2, '2021-10-25 09:11:06');
 /*!40000 ALTER TABLE `admin` ENABLE KEYS */;
 
 -- Dumping structure for table mega-tony.auth_tokens
@@ -59,12 +62,28 @@ CREATE TABLE IF NOT EXISTS `list_barang` (
   `tgl_expire` date DEFAULT NULL,
   `foto` text DEFAULT NULL,
   PRIMARY KEY (`id_barang`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8mb4;
 
--- Dumping data for table mega-tony.list_barang: ~0 rows (approximately)
+-- Dumping data for table mega-tony.list_barang: ~17 rows (approximately)
 /*!40000 ALTER TABLE `list_barang` DISABLE KEYS */;
 INSERT INTO `list_barang` (`id_barang`, `nama_barang`, `harga`, `stok`, `promo`, `diskon`, `satuan`, `unit`, `tgl_expire`, `foto`) VALUES
-  (1, 'Oreo Besar', 10000, 200, 'Beli 2 gratis 1', 10, 'pcs', 1, '2021-11-21', '1722776945oreo.jpg');
+  (1, 'Oreo Besar', 10000, 200, 'Beli 2 gratis 1', 10, 'pcs', 1, '2021-11-21', '1722776945oreo.jpg'),
+  (2, 'Minyak Goreng', 15000, 150, '', 0, 'pcs', 1, '2021-11-25', 'minyak.jpg'),
+  (3, 'Kalpa', 2000, 200, '', 5, 'pcs', 1, '2021-12-25', '329447873kalpa.jpg'),
+  (4, 'Beng-beng', 1000, 100, '', 0, 'pcs', 1, '2022-01-25', '330009499bengbeng.jpg'),
+  (5, 'Wafer Classic', 10000, 300, 'Beli 2 gratis 1', 0, 'pcs', 1, '2022-02-25', '495192766classic.jpg'),
+  (6, 'Gabing Chocolate', 12000, 180, '', 10, 'pcs', 1, '2022-03-25', '709823059chocolate.jpg'),
+  (7, 'Pillows', 12000, 100, '', 0, 'pcs', 1, '2021-12-25', '798035465pillows.jpg'),
+  (8, 'Wafer Diabetasol', 15000, 50, '', 0, 'pcs', 1, '2021-11-25', '898971797diabetasol.jpg'),
+  (9, 'Wafer Superstar', 2000, 100, '', 0, 'pcs', 1, '2022-02-25', '1116721285superstar.jpg'),
+  (10, 'Wafer Knoppers', 5000, 80, '', 5, 'pcs', 1, '2022-03-25', '1530580760knoppers.jpg'),
+  (11, 'Astor', 1000, 70, '', 0, 'pcs', 1, '2022-04-25', '1591523232astor.jpg'),
+  (12, 'Wafer Nabati', 15000, 45, '', 10, 'pcs', 1, '2021-12-25', '1627113236nabati.jpg'),
+  (13, 'Wafello', 4000, 30, '', 0, 'pcs', 1, '2022-02-25', '1642042847wafello.jpg'),
+  (14, 'Getgit', 2000, 59, '', 4, 'pcs', 1, '2022-03-25', '1661546435getgit.jpg'),
+  (15, 'Wafer Tango', 8000, 56, 'Beli 3 Gratis Piring', 0, 'pcs', 1, '2022-01-25', '1813747564tango.jpg'),
+  (16, 'Wafer Ovaltine', 10000, 78, '', 4, 'pcs', 1, '2022-04-25', '1970758816ovaltine.jpg'),
+  (17, 'Wafer Gery', 5000, 45, '', 0, 'pcs', 1, '2022-03-25', '1998018935gery.jpg');
 /*!40000 ALTER TABLE `list_barang` ENABLE KEYS */;
 
 -- Dumping structure for table mega-tony.log_accessi
@@ -75,14 +94,18 @@ CREATE TABLE IF NOT EXISTS `log_accessi` (
   `data` timestamp NOT NULL DEFAULT current_timestamp(),
   `accesso` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
 
--- Dumping data for table mega-tony.log_accessi: ~2 rows (approximately)
+-- Dumping data for table mega-tony.log_accessi: ~6 rows (approximately)
 /*!40000 ALTER TABLE `log_accessi` DISABLE KEYS */;
 INSERT INTO `log_accessi` (`id`, `ip`, `mail_immessa`, `data`, `accesso`) VALUES
   (1, '::1', 'megatony@gmail.com', '2021-10-21 13:08:50', 1),
   (2, '::1', 'megatony@gmail.com', '2021-10-21 14:05:30', 1),
-  (3, '::1', 'megatony@gmail.com', '2021-10-21 14:53:10', 1);
+  (3, '::1', 'megatony@gmail.com', '2021-10-21 14:53:10', 1),
+  (4, '::1', 'megatony@gmail.com', '2021-10-23 16:15:22', 0),
+  (5, '::1', 'megatony@gmail.com', '2021-10-23 16:15:38', 1),
+  (6, '::1', 'megatony@gmail.com', '2021-10-25 08:57:02', 1),
+  (7, '::1', 'megatony@gmail.com', '2021-10-25 09:05:28', 1);
 /*!40000 ALTER TABLE `log_accessi` ENABLE KEYS */;
 
 -- Dumping structure for table mega-tony.pegawai
@@ -94,12 +117,14 @@ CREATE TABLE IF NOT EXISTS `pegawai` (
   `hp` varchar(50) DEFAULT NULL,
   `foto` text DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4;
 
--- Dumping data for table mega-tony.pegawai: ~0 rows (approximately)
+-- Dumping data for table mega-tony.pegawai: ~3 rows (approximately)
 /*!40000 ALTER TABLE `pegawai` DISABLE KEYS */;
 INSERT INTO `pegawai` (`id`, `nama`, `jabatan`, `email`, `hp`, `foto`) VALUES
-  (1, 'Rhadi Indrawan', 'Leader', 'rhadi.indrawankkpi@gmail.com', '085255554789', '1218473185fotoku.jpg');
+  (1, 'Rhadi Indrawan', 'Leader', 'rhadi.indrawankkpi@gmail.com', '085255554789', '1218473185fotoku.jpg'),
+  (2, 'Tony Stark', 'Pegawai', 'tony.stark@gmail.com', '085234978798', '181653438tony.jpg'),
+  (3, 'Hulk', 'Pegawai', 'hulk.hulk@gmail.com', '085234978798', '1127862404hulk.jpg');
 /*!40000 ALTER TABLE `pegawai` ENABLE KEYS */;
 
 -- Dumping structure for table mega-tony.pembelian
@@ -112,12 +137,13 @@ CREATE TABLE IF NOT EXISTS `pembelian` (
   `tot_stok` int(11) DEFAULT NULL,
   `tanggal` date DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4;
 
 -- Dumping data for table mega-tony.pembelian: ~0 rows (approximately)
 /*!40000 ALTER TABLE `pembelian` DISABLE KEYS */;
 INSERT INTO `pembelian` (`id`, `id_barang`, `harga_yg_dibeli`, `stok_yg_dibeli`, `stok_awal`, `tot_stok`, `tanggal`) VALUES
-  (1, 1, 20000, 2, 200, 202, '2021-10-21');
+  (2, 2, 45000, 3, 150, 153, '2021-10-25'),
+  (3, 3, 10000, 5, 200, 205, '2021-10-25');
 /*!40000 ALTER TABLE `pembelian` ENABLE KEYS */;
 
 -- Dumping structure for table mega-tony.penjualan
@@ -128,12 +154,14 @@ CREATE TABLE IF NOT EXISTS `penjualan` (
   `tot_yg_dibeli` int(11) DEFAULT NULL,
   `tanggal` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4;
 
 -- Dumping data for table mega-tony.penjualan: ~0 rows (approximately)
 /*!40000 ALTER TABLE `penjualan` DISABLE KEYS */;
 INSERT INTO `penjualan` (`id`, `id_barang`, `jum_yg_dibeli`, `tot_yg_dibeli`, `tanggal`) VALUES
-  (1, 1, 2, 18000, '2021-10-21 00:00:00');
+  (2, 2, 3, 45000, '2021-10-25 00:00:00'),
+  (3, 3, 5, 9500, '2021-10-25 00:00:00'),
+  (4, 13, 2, 8000, '2021-10-25 00:00:00');
 /*!40000 ALTER TABLE `penjualan` ENABLE KEYS */;
 
 -- Dumping structure for table mega-tony.utenti
@@ -147,7 +175,7 @@ CREATE TABLE IF NOT EXISTS `utenti` (
   `data` timestamp NOT NULL DEFAULT current_timestamp(),
   `last_update` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 
 -- Dumping data for table mega-tony.utenti: ~0 rows (approximately)
 /*!40000 ALTER TABLE `utenti` DISABLE KEYS */;

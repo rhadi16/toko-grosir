@@ -122,6 +122,15 @@
 	  </div>
 	</section>
 
+	<?php
+    error_reporting(0);
+    $desc = $_GET['desc']; 
+    if ($desc == "success-adm") {
+	?>
+	  <div class="desc-in" data-flashdata="<?php echo $desc; ?>"></div>
+	<?php } elseif ($desc == "failed-adm") { ?>
+		<div class="desc-in" data-flashdata="<?php echo $desc; ?>"></div>
+	<?php } ?>
 
 <?php include('template/footer.php'); ?>
 
@@ -131,4 +140,19 @@
     	format: 'yyyy-mm-dd'
     });
   });
+
+  const desc_in = $('.desc-in').data('flashdata')
+	  if (desc_in == "success-adm") {
+	    Swal.fire(
+	      'Berhasil!',
+	      'Anda Telah Melakukan Perubahan Admin',
+	      'success'
+	    )
+	  } else if (desc_in == "failed-adm") {
+	  	Swal.fire(
+	      'Gagal!',
+	      'Anda Gagal Melakukan Perubahan Admin',
+	      'error'
+	    )
+	  }
 </script>

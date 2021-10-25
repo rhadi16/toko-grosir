@@ -114,6 +114,25 @@
 			echo '<script language="javascript"> window.location.href = "../list-barang.php?desc=failed-del" </script>';
 		}
 
+	} elseif($action == "dispro") {
+
+		$id_barang = $_POST['id_barang'];
+		$promo 	   = $_POST['promo'];
+		$diskon    = $_POST['diskon'];
+
+		$result = mysqli_query($mysqli, "UPDATE list_barang
+			  									SET 
+			  									   promo       = '$promo',
+			  									   diskon      = '$diskon'
+			  									   WHERE id_barang = $id_barang
+			  									") or die(mysqli_error($mysqli));
+
+		if ($result) {
+			echo '<script language="javascript"> window.location.href = "../saran-diskon.php?desc=success-in" </script>';
+		} else {
+			echo '<script language="javascript"> window.location.href = "../saran-diskon.php?desc=failed-in" </script>';
+		}
+
 	}
 
 ?>

@@ -19,6 +19,9 @@ nav .brand-logo {
 #saran-diskon .list {
 	margin-top: 30px;
 }
+#saran-diskon .list {
+	margin-bottom: 50px;
+}
 #pegawai .list .row.parent,
 #list-barang .list .row.parent {
 	display: flex;
@@ -58,7 +61,8 @@ nav .brand-logo {
 	padding: 5px;
 }
 #pegawai .list .card-panel table .btn,
-#list-barang .list .card-panel table .btn {
+#list-barang .list .card-panel table .btn,
+#saran-diskon .list .card-panel table .btn {
 	height: unset;
 	line-height: unset;
 	padding: 3px;
@@ -69,13 +73,15 @@ nav .brand-logo {
 #pegawai #tambah-pegawai .modal-content,
 #pegawai .edit-pegawai .modal-content,
 #list-barang #tambah-barang .modal-content,
-#list-barang .edit-barang .modal-content {
+#list-barang .edit-barang .modal-content,
+#saran-diskon .input-dispro .modal-content {
 	padding-bottom: unset;
 }
 #pegawai #tambah-pegawai .modal-content h4,
 #pegawai .edit-pegawai .modal-content h4,
 #list-barang #tambah-barang .modal-content h4,
-#list-barang .edit-barang .modal-content h4 {
+#list-barang .edit-barang .modal-content h4,
+#saran-diskon .input-dispro .modal-content h4 {
 	font-weight: 500;
 	text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
 }
@@ -218,20 +224,22 @@ nav .brand-logo {
 		line-height: 1.9rem;
 	}
 
-	/* pegawai.php & list-barang.php*/
+	/* pegawai.php & list-barang.php & saran-diskon.php*/
 	#hal-utama .card-panel {
 		width: 100%;
 	}
 	#pegawai #tambah-pegawai .modal-content h4,
 	#pegawai .edit-pegawai .modal-content h4,
 	#list-barang #tambah-barang .modal-content h4,
-	#list-barang .edit-barang .modal-content h4 {
+	#list-barang .edit-barang .modal-content h4,
+	#saran-diskon .input-dispro .modal-content h4 {
 		font-size: 1.4rem;
 	}
 	#pegawai #tambah-pegawai .modal-content,
 	#pegawai .edit-pegawai .modal-content,
 	#list-barang #tambah-barang .modal-content,
-	#list-barang .edit-barang .modal-content {
+	#list-barang .edit-barang .modal-content,
+	#saran-diskon .input-dispro .modal-content {
 		padding: 10px 10px 0 10px;
 	}
 	#pilih-admin h4,

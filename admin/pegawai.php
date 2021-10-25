@@ -106,16 +106,16 @@
 		                    <th>aksi</th>
 		                    <td class="center-align">
 		                    	<a class="waves-effect waves-light btn modal-trigger lime darken-1" href="#edit-pegawai<?php echo $data['id']; ?>">edit</a>
-		                    	<a class="waves-effect waves-light btn red darken-1 confirm-delete" style="cursor: pointer;">hapus</a>
+		                    	<a class="waves-effect waves-light btn red darken-1 confirm-delete<?php echo $data['id']; ?>" style="cursor: pointer;">hapus</a>
 		                    	<?php 
 				    								$tu = mysqli_query($mysqli, "SELECT * FROM utenti WHERE email = '".$data['email']."'");
 				    								$du = mysqli_fetch_array($tu);
 
 				    								if ($du['email'] == $data['email']) {
 		                    	?>
-		                    		<a class="waves-effect waves-light btn red darken-4 delete-account" style="cursor: pointer;">hapus akun</a>
+		                    		<a class="waves-effect waves-light btn red darken-4 delete-account<?php echo $du['id']; ?>" style="cursor: pointer;">hapus akun</a>
 		                    		<script type="text/javascript">
-												      $('.delete-account').on('click', function(e) {
+												      $('.delete-account<?php echo $du['id']; ?>').on('click', function(e) {
 												        Swal.fire({
 												          title: 'Anda Yakin?',
 												          text: "Ingin Menghapus Akun <?php echo $data['email']; ?>!",
@@ -136,7 +136,7 @@
 		                    	<?php } ?>
 
 		                    	<script type="text/javascript">
-											      $('.confirm-delete').on('click', function(e) {
+											      $('.confirm-delete<?php echo $data['id']; ?>').on('click', function(e) {
 											        Swal.fire({
 											          title: 'Anda Yakin?',
 											          text: "Ingin Menghapus Data <?php echo $data['nama']; ?>!",
