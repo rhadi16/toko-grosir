@@ -18,6 +18,7 @@
 					margin: 0;
 					padding: 0;
 					border-collapse: collapse;
+					font-family: calibri, sans-serif;
 				}
 				main {
 					width: 100%;

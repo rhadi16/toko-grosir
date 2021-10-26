@@ -84,6 +84,7 @@ div.ui-state-active {
   font-weight: 500;
   text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.3);
   margin-bottom: 13px;
+  font-family: 'Signika', sans-serif;
 }
 #pembelian .list-barang,
 #penjualan .list-penjualan {

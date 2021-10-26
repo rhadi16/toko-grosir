@@ -179,12 +179,12 @@
 	            <td><?php echo $data['tot_yg_dibeli']; ?></td>
 	            <td><?php echo datetimeFormat::TanggalIndo($data['tanggal']); ?></td>
 	            <td>
-	            	<a class="waves-effect waves-light btn red darken-1 confirm-delete-stok" style="cursor: pointer;">Hapus Stok</a>
-	            	<a class="waves-effect waves-light btn lime darken-1 confirm-delete-data" style="cursor: pointer;">Hapus Data</a>
+	            	<a class="waves-effect waves-light btn red darken-1 confirm-delete-stok<?php echo $data['id']; ?>" style="cursor: pointer;">Hapus Stok</a>
+	            	<a class="waves-effect waves-light btn lime darken-1 confirm-delete-data<?php echo $data['id']; ?>" style="cursor: pointer;">Hapus Data</a>
 	            </td>
 	          </tr>
 	          <script type="text/javascript">
-				      $('.confirm-delete-stok').on('click', function(e) {
+				      $('.confirm-delete-stok<?php echo $data['id']; ?>').on('click', function(e) {
 				        Swal.fire({
 				          title: 'Anda Yakin?',
 				          text: "Menghapus Barang <?php echo $data['nama_barang']; ?>, Jumlah Stok Barang Juga Akan Bertambah Di List Barang!",
@@ -200,7 +200,7 @@
 				        })
 				      });
 
-				      $('.confirm-delete-data').on('click', function(e) {
+				      $('.confirm-delete-data<?php echo $data['id']; ?>').on('click', function(e) {
 				        Swal.fire({
 				          title: 'Anda Yakin?',
 				          text: "Menghapus Barang <?php echo $data['nama_barang']; ?>, Jumlah Stok Barang Tidak Akan Bertambah Di List Barang!",

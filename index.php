@@ -136,6 +136,7 @@ $sql->execute();
     <!--Import Google Icon Font-->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+    <link href="https://fonts.googleapis.com/css2?family=Signika&family=Varela+Round&display=swap" rel="stylesheet">
     <!--Import materialize.css-->
     <link type="text/css" rel="stylesheet" href="css/materialize.css"  media="screen,projection"/>
     <link rel="stylesheet" type="text/css" href="css/style.css">
@@ -368,7 +369,7 @@ $sql->execute();
       <div class="container">
         <div class="row">
           <div class="col s12">
-            <h5 class="white-text">Office</h5>
+            <h5 class="white-text">OFFICE</h5>
             <ul>
               <li class="white-text">Toko Mega Tony</li>
               <li class="white-text">Jl. Mannuruki 2 lorong 1 no 30</li>

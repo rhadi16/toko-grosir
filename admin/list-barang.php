@@ -156,10 +156,10 @@
 		                    <th>aksi</th>
 		                    <td class="center-align">
 		                    	<a class="waves-effect waves-light btn modal-trigger lime darken-1" href="#edit-barang<?php echo $data['id_barang']; ?>">edit</a>
-		                    	<a class="waves-effect waves-light btn red darken-1 confirm-delete" style="cursor: pointer;">hapus</a>
+		                    	<a class="waves-effect waves-light btn red darken-1 confirm-delete<?php echo $data['id_barang']; ?>" style="cursor: pointer;">hapus</a>
 
 		                    	<script type="text/javascript">
-											      $('.confirm-delete').on('click', function(e) {
+											      $('.confirm-delete<?php echo $data['id_barang']; ?>').on('click', function(e) {
 											        Swal.fire({
 											          title: 'Anda Yakin?',
 											          text: "Ingin Menghapus <?php echo $data['nama_barang']; ?>!",
