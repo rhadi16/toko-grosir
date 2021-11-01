@@ -14,6 +14,11 @@
               'type'   => ['text', 'text']
             ];
 
+  if($_SESSION['user'] != 1){
+    // fungsi redirect menggunakan javascript
+    echo '<script language="javascript"> window.location.href = "index.php" </script>';
+	}
+
 ?>
 
 	<section id="pegawai">
@@ -217,7 +222,7 @@
 						      <div class="row">
 						        <div class="input-field col s12">
 						          <i class="material-icons prefix">email</i>
-						          <input id="email" type="email" class="validate" name="email" required value="<?php echo $data['email']; ?>">
+						          <input id="email" type="email" class="validate" name="email" required readonly value="<?php echo $data['email']; ?>">
 						          <label for="email">Email</label>
 						        </div>
 						        <div class="input-field col s12">
@@ -230,7 +235,7 @@
 					    <div class="modal-footer">
 					      <a class="waves-effect waves-light btn modal-close red darken-4"><i class="material-icons left">close</i>Tutup</a>
 					      <input type="hidden" name="register" value="register">
-					      <button type="submit" class="waves-effect waves-light btn light-green accent-4"><i class="material-icons left">add</i>Ubah</button>
+					      <button type="submit" class="waves-effect waves-light btn light-green accent-4"><i class="material-icons left">add</i>Tambah</button>
 					    </div>
 					  </form>
 				  </div>

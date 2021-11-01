@@ -7,12 +7,14 @@
 			    <div class="col s12">
 			      <div class="card-panel blue darken-2 center-align">
 			        <div class="row">
+			        	<?php if ($_SESSION['user'] == 1) { ?>
 			        	<div class="col s12">
 			        		<a class="waves-effect waves-light btn modal-trigger deep-orange darken-1" href="#pilih-admin">Pilih Admin Yang Bertugas</a>
 			        	</div>
 			        	<div class="col s12">
 			        		<a class="waves-effect waves-light btn brown darken-1" href="pegawai.php">Kelola Pegawai</a>
 			        	</div>
+			        	<?php } ?>
 			        	<div class="col s12">
 			        		<a class="waves-effect waves-light btn blue-grey lighten-2" href="list-barang.php">Kelola Barang</a>
 			        	</div>
