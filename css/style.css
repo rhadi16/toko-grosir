@@ -12,13 +12,26 @@ nav .brand-logo {
 }
 
 .modal .modal-content {
-	padding-bottom: unset;
+	padding: 10px 10px 0 10px;
 }
 
 .modal .modal-content h4 {
 	font-weight: 500;
 	text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.3);
 	font-family: 'Signika', sans-serif;
+	text-align: center;
+}
+
+.modal .modal-content .row {
+	margin-bottom: unset;
+}
+#login.modal .modal-content .row {
+	margin-bottom: 10px;
+}
+#login input[type=text]:not(.browser-default).validate + label,
+#send-email input[type=text]:not(.browser-default).validate + label,
+#send-email input[type=email]:not(.browser-default).validate + label {
+	width: 99%;
 }
 
 .modal .modal-footer .btn {
@@ -185,6 +198,11 @@ nav .brand-logo {
 	margin-bottom: 40px;
 }
 
+.footer {
+	border-top-left-radius: 10px;
+	border-top-right-radius: 10px;
+	box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.3);
+}
 .footer .row {
 	margin-bottom: unset;
 }
@@ -207,7 +225,13 @@ nav .brand-logo {
 
 @media only screen and (max-width: 576px) {
 	#login .modal-content h4 {
-		font-size: 1.8rem;
+		font-size: 1.6rem;
+	}
+	#send-wa .modal-content h4 {
+		font-size: 1.6rem;
+	}
+	#send-email .modal-content h4 {
+		font-size: 1.6rem;
 	}
 
 	nav .brand-logo {

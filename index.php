@@ -197,7 +197,7 @@ $sql->execute();
             </div>
         </div>
         <div class="modal-footer">
-          <a class="waves-effect waves-light btn modal-close red darken-4"><i class="material-icons left">close</i>Tutup</a>
+          <button class="waves-effect waves-light btn modal-close red darken-4"><i class="material-icons left">close</i>Tutup</button>
           <input type="hidden" name="login" value="login">
           <button type="submit" class="waves-effect waves-light btn light-green accent-4"><i class="material-icons left">input</i>Login</button>
         </div>
@@ -246,10 +246,74 @@ $sql->execute();
 
     <div class="account container">
       <div class="container">
-        <a class="blue darken-3 tooltipped" data-position="bottom" data-tooltip="Whatsapp"><i class="bi bi-whatsapp"></i></a>
+        <a class="modal-trigger blue darken-3 tooltipped" data-position="bottom" data-tooltip="Whatsapp" href="#send-wa"><i class="bi bi-whatsapp"></i></a>
         <a class="blue darken-3 tooltipped" data-position="bottom" data-tooltip="Facebook"><i class="bi bi-facebook"></i></a>
         <a class="blue darken-3 tooltipped" data-position="bottom" data-tooltip="Instagram"><i class="bi bi-instagram"></i></a>
-        <a class="blue darken-3 tooltipped" data-position="bottom" data-tooltip="Email"><i class="bi bi-envelope"></i></a>
+        <a class="modal-trigger blue darken-3 tooltipped" data-position="bottom" data-tooltip="Email"href="#send-email"><i class="bi bi-envelope"></i></a>
+      </div>
+    </div>
+    <div class="container">
+      <!-- Modal Structure -->
+      <div id="send-wa" class="modal">
+        <form method="post" action="send-message/send-wa.php" target="_blank">
+          <div class="modal-content">
+            <h4>Send WhatsApp</h4>
+            <div class="row">
+              <div class="input-field col s12">
+                <i class="material-icons prefix">chat_bubble</i>
+                <textarea id="text-wa" class="materialize-textarea" name="message"></textarea>
+                <label for="text-wa">Masukkan Pesan</label>
+              </div>
+              <?php 
+                $g_nowa = '';
+                $nowa = $adm['hp'];
+                $p_nowa = str_split($nowa);
+                if ($p_nowa[0] == 0) {
+                  for ($i=1; $i < count($p_nowa); $i++) { 
+                    $g_nowa .= $p_nowa[$i];
+                  }
+                  $fix_wa = "62".$g_nowa;
+                } else {
+                  $fix_wa = $nowa;
+                }
+              ?>
+              <input type="hidden" name="nowa" value="<?php echo $fix_wa; ?>">
+            </div>
+          </div>
+          <div class="modal-footer">
+            <a class="waves-effect waves-light btn modal-close red darken-4"><i class="material-icons left">close</i>Tutup</a>
+            <input type="hidden" name="login" value="login">
+            <button type="submit" name="submit" class="waves-effect waves-light btn light-green accent-4"><i class="material-icons left">send</i>Kirim</button>
+          </div>
+        </form>
+      </div>
+
+      <!-- Modal Structure -->
+      <div id="send-email" class="modal">
+        <form method="post" action="send-message/send-email.php">
+          <div class="modal-content">
+            <h4>Send Email</h4>
+            <div class="row">
+              <div class="input-field col s12">
+                <input id="your_email" type="email" class="validate" required name="efrom">
+                <label for="your_email">Masukkan Email Anda</label>
+              </div>
+              <div class="input-field col s12">
+                <input id="your_name" type="text" class="validate" required name="name">
+                <label for="your_name">Masukkan Nama Anda</label>
+              </div>
+              <div class="input-field col s12">
+                <textarea id="text-email" class="materialize-textarea" name="message" required></textarea>
+                <label for="text-email">Masukkan Pesan</label>
+              </div>
+              <input type="hidden" name="eto" value="<?php echo $adm['email']; ?>">
+            </div>
+          </div>
+          <div class="modal-footer">
+            <a class="waves-effect waves-light btn modal-close red darken-4"><i class="material-icons left">close</i>Tutup</a>
+            <button type="submit" name="submit" class="waves-effect waves-light btn light-green accent-4"><i class="material-icons left">send</i>Kirim</button>
+          </div>
+        </form>
       </div>
     </div>
 
@@ -377,12 +441,20 @@ $sql->execute();
             </ul>
           </div>
         </div>
+        <?php
+          error_reporting(0);
+          $desc = $_GET['desc']; 
+          if ($desc == "success-send") {
+        ?>
+          <div class="desc-in" data-flashdata="<?php echo $desc; ?>"></div>
+        <?php } ?>
       </div>
     </div>
 
     <!--JavaScript at end of body for optimized loading-->
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script type="text/javascript" src="js/materialize.min.js"></script>
+    <script src="admin/asset/sweetalert/dist/sweetalert2.all.min.js"></script>
     <script type="text/javascript" src="js/script.js"></script>
   </body>
 </html>

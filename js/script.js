@@ -10,6 +10,15 @@ var hariarray=new Array("Minggu,","Senin,","Selasa,","Rabu,","Kamis,","Jum'at,",
 var bulanarray=new Array("Januari","Februari","Maret","April","Mei","Juni","Juli","Agustus","September","Oktober","November","Desember");
 document.getElementById("tanggalwaktu").innerHTML = hariarray[hari]+" "+tanggal+" "+bulanarray[bulan]+" "+tahun;
 
+const desc_in = $('.desc-in').data('flashdata');
+if (desc_in == "success-send") {
+    Swal.fire(
+      'Berhasil Mengirim Email!',
+      'Silahkan Cek Email Anda Untuk Melihat Balasan Dari Admin',
+      'success'
+    )
+}
+
 $(document).ready(function(){
     $('.sidenav').sidenav();
 
@@ -18,4 +27,6 @@ $(document).ready(function(){
     $('.tooltipped').tooltip();
 
     $('select').formSelect();
+
+    $('.swal2-popup').find('div[class$="select-wrapper"]').remove();
 });
