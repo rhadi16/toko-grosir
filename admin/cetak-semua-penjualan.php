@@ -1,4 +1,11 @@
 <?php 
+	session_start();
+
+	$id_admin = $_SESSION['user'];
+	if(!isset($_SESSION['user'])){
+	    // fungsi redirect menggunakan javascript
+	    echo '<script language="javascript"> window.location.href = "../index.php" </script>';
+	}
 	// echo '<link rel="shortcut icon" href="assets/gambar/logo_lutra.png" type="image/x-icon">';
 	require_once __DIR__ . '/lib/mpdf/vendor/autoload.php';
 
@@ -48,17 +55,30 @@
 	include 'config/connect.php';
     include 'config/auth.php';
     include 'asset/datetime/datetimeFormat.php';
-    
-    $dt = mysqli_query($mysqli, "SELECT 
+
+    if ($id_admin == 1) {
+    	$dt = mysqli_query($mysqli, "SELECT 
 									a.*,
 									b.nama_barang
 								FROM penjualan a
 								LEFT JOIN list_barang b ON a.id_barang=b.id_barang
 								ORDER BY id DESC");
+    } else {
+    	$dt = mysqli_query($mysqli, "SELECT 
+									a.*,
+									b.nama_barang
+								FROM penjualan a
+								LEFT JOIN list_barang b ON a.id_barang=b.id_barang
+								WHERE id_admin = $id_admin
+								ORDER BY id DESC");
+    }
+    $ad = mysqli_query($mysqli, "SELECT * FROM utenti WHERE id = $id_admin");
+  	$ad1 = mysqli_fetch_array($ad);
+
 	$html .= '
 		  <body>
 				<main>
-					<h1>LAPORAN SEMUA BARANG TERJUAL <br>TOKO MEGA TONY</h1>
+					<h1>LAPORAN SEMUA BARANG TERJUAL DARI <br>'.$ad1['email'].'<br>TOKO MEGA TONY</h1>
 
 					<table>
 						<tr>

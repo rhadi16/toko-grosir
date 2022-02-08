@@ -4,14 +4,28 @@
 ?>
 <link rel="stylesheet" type="text/css" href="asset/css/pembelian-penjualan-style.css">
 <?php 
-  $qry    = "SELECT 
+	$id_admin = $_SESSION['user'];
+
+	if ($_SESSION['user'] == 1) {
+		$qry    = "SELECT 
 							a.*,
 							b.nama_barang,
 							b.stok,
 							b.harga,
 							b.diskon
-						FROM penjualan a
+						FROM penjualan a 
 						LEFT JOIN list_barang b ON a.id_barang=b.id_barang";
+	} else {
+		$qry    = "SELECT 
+							a.*,
+							b.nama_barang,
+							b.stok,
+							b.harga,
+							b.diskon
+						FROM penjualan a 
+						LEFT JOIN list_barang b ON a.id_barang=b.id_barang
+						WHERE id_admin = $id_admin";
+	}
       
   $orderby = "id"; 
 
@@ -62,6 +76,7 @@
 				          <input placeholder="" id="tanggal" type="text" class="validate datepicker" name="tanggal[]" required>
 				          <label for="tanggal">Tanggal Beli</label>
 				        </div>
+				        <input type="hidden" name="id_admin" value="<?php echo $id_admin; ?>">
 						  </div>
 			      </div>
 			    </div>

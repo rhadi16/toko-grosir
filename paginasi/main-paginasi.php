@@ -12,9 +12,13 @@
           $dt = mysqli_query($mysqli, "$qry $orderby LIMIT ".$limitStart.",".$limit);
      }else{
      //kondisi jika parameter kolom pencarian diisi
-          $dt = mysqli_query($mysqli, "$qry 
-                                       WHERE $kolomCari LIKE '%$kolomKataKunci%' $orderby  
-                                       LIMIT ".$limitStart.",".$limit);
+          if ($kolomCari == 'harga') {
+               $dt = mysqli_query($mysqli, "$qry WHERE $kolomCari <= $kolomKataKunci ORDER BY harga DESC LIMIT ".$limitStart.",".$limit);
+          } else {
+               $dt = mysqli_query($mysqli, "$qry 
+                                            WHERE $kolomCari LIKE '%$kolomKataKunci%' $orderby  
+                                            LIMIT ".$limitStart.",".$limit);
+          }
      }
                  
      $no = $limitStart + 1;

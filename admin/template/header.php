@@ -36,7 +36,9 @@
             <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
             <ul class="right hide-on-med-and-down">
               <li><a href="index.php">Utama</a></li>
-              <li><a href="pegawai.php">Pegawai</a></li>
+              <?php if ($_SESSION['user'] == 1) { ?>
+                <li><a href="pegawai.php">Pegawai</a></li>
+              <?php } ?>
               <li><a href="list-barang.php">Kelola Barang</a></li>
               <li><a href="pembelian.php">Kelola Pembelian</a></li>
               <li><a href="penjualan.php">Kelola Penjualan</a></li>

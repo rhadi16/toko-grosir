@@ -1,4 +1,11 @@
 <?php 
+	session_start();
+
+	if(!isset($_SESSION['user'])){
+	    // fungsi redirect menggunakan javascript
+	    echo '<script language="javascript"> window.location.href = "../index.php" </script>';
+	}
+
 	// echo '<link rel="shortcut icon" href="assets/gambar/logo_lutra.png" type="image/x-icon">';
 	require_once __DIR__ . '/lib/mpdf/vendor/autoload.php';
 	$tanggal_awal  = $_POST['tanggal_awal'];

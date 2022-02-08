@@ -11,6 +11,7 @@
 		$harga_yg_dibeli = $_POST['harga_yg_dibeli'];
 		$stok_yg_dibeli  = $_POST['stok_yg_dibeli'];
 		$tanggal 		 = $_POST['tanggal'];
+		$id_admin 	   	 = $_POST['id_admin'];
 
 		$jum_data = count($id_barang);
 
@@ -21,8 +22,8 @@
 			$stok_awal[$i] = $stok_list_brg[$i][1];
 			$tot_stok[$i]  = $stok_awal[$i] + $stok_yg_dibeli[$i];
 
-			$result = mysqli_query($mysqli, "INSERT INTO pembelian (id, id_barang, harga_yg_dibeli, stok_yg_dibeli, stok_awal, tot_stok, tanggal) 
-											 VALUES(null, '$id_brg[$i]', '$harga_yg_dibeli[$i]', '$stok_yg_dibeli[$i]', '$stok_awal[$i]', '$tot_stok[$i]', '$tanggal[$i]')") or die(mysqli_error($mysqli));
+			$result = mysqli_query($mysqli, "INSERT INTO pembelian (id, id_barang, harga_yg_dibeli, stok_yg_dibeli, stok_awal, tot_stok, tanggal, id_admin) 
+											 VALUES(null, '$id_brg[$i]', '$harga_yg_dibeli[$i]', '$stok_yg_dibeli[$i]', '$stok_awal[$i]', '$tot_stok[$i]', '$tanggal[$i]', '$id_admin[$i]')") or die(mysqli_error($mysqli));
 			$result1= mysqli_query($mysqli, "UPDATE list_barang SET stok = '$tot_stok[$i]' WHERE id_barang = '$id_brg[$i]'") 
 											or die(mysqli_error($mysqli));
 		}

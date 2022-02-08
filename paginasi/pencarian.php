@@ -3,7 +3,6 @@
     <div class="row">
       <div class="input-field col s12 m6">
         <select name="Kolom" id="select-column-paginasi">
-          <option value="" disabled selected>Choose your option</option>
           <?php 
             for ($i=0; $i < count($column['value']); $i++) {
           ?>
@@ -18,7 +17,7 @@
         <label for="input-column-paginasi">Nama Yang Dicari</label>
       </div>
 
-      <div class="col">
+      <div class="col s12 m6">
         <button type="submit" class="waves-effect waves-light btn blue darken-2"><i class="material-icons left">search</i>Cari</button>
         <?php 
           if(isset($_GET['Kolom']) || isset($_GET['KataKunci'])){

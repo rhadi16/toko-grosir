@@ -124,9 +124,9 @@ $sql->execute();
   $view   = "index.php";
 
   $column = [
-              'value'  => ['nama_barang', 'harga', 'promo', 'diskon'],
-              'label'  => ['Nama Barang', 'Harga Barang', 'Promo', 'Diskon'],
-              'type'   => ['text', 'double', 'text', 'int']
+              'value'  => ['nama_barang', 'harga'],
+              'label'  => ['Nama Barang', 'Harga Barang'],
+              'type'   => ['text', 'double']
             ];
 ?>
 <!DOCTYPE html>
@@ -155,7 +155,6 @@ $sql->execute();
             <a href="#!" class="brand-logo">Mega Tony</a>
             <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
             <ul class="right hide-on-med-and-down">
-              <li><a href="sass.html">About</a></li>
               <li><a class="waves-effect waves-light btn modal-trigger blue darken-3" href="#login">Login</a></li>
             </ul>
           </div>
@@ -163,52 +162,53 @@ $sql->execute();
       </nav>
     </div>
 
-    <!-- Modal Structure -->
-    <div id="login" class="modal">
-      <?php if (isset($konf_login)) { ?>
-      <div class="modal-content">
-        <h4>Login Admin</h4>
-        <p><?php echo $konf_login; ?></p>
-      </div>
-      <div class="modal-footer">
-        <a class="waves-effect waves-light btn modal-close red darken-4"><i class="material-icons left">close</i>Tutup</a>
-      </div>
-      <?php } ?>
-      <?php if (empty($_SESSION["user"])) { ?>
-      <form method="post" action="">
-        <div class="modal-content">
-          <h4>Login Admin</h4>
-          <p style="color: #C00; text-align: center;"><b><?php if(isset($message)){ echo $message; } ?></b></p>
-            <div class="row">
-              <div class="input-field col s12">
-                <i class="material-icons prefix">account_box</i>
-                <input id="icon_prefix" type="email" class="validate" name="email" required>
-                <label for="icon_prefix">Email</label>
-              </div>
-              <div class="input-field col s12">
-                <i class="material-icons prefix">lock</i>
-                <input id="icon_telephone" type="password" name="password" class="validate" required>
-                <label for="icon_telephone">Password</label>
-              </div>
-              <label class="remember">
-                <input type="checkbox" name="remember" value="true"/>
-                <span>Remember Me</span>
-              </label>
-            </div>
-        </div>
-        <div class="modal-footer">
-          <button class="waves-effect waves-light btn modal-close red darken-4"><i class="material-icons left">close</i>Tutup</button>
-          <input type="hidden" name="login" value="login">
-          <button type="submit" class="waves-effect waves-light btn light-green accent-4"><i class="material-icons left">input</i>Login</button>
-        </div>
-      </form>
-      <?php } ?>
-    </div>
-         
     <ul class="sidenav" id="mobile-demo">
-      <li><a href="About.html">Sass</a></li>
       <li><a class="waves-effect waves-light btn modal-trigger blue darken-3" href="#login">Login</a></li>
     </ul>
+
+    <!-- Modal Structure -->
+    <div class="container">
+      <div id="login" class="modal container">
+        <?php if (isset($konf_login)) { ?>
+        <div class="modal-content">
+          <h4>Login Admin</h4>
+          <p><?php echo $konf_login; ?></p>
+        </div>
+        <div class="modal-footer">
+          <a class="waves-effect waves-light btn modal-close red darken-4"><i class="material-icons left">close</i>Tutup</a>
+        </div>
+        <?php } ?>
+        <?php if (empty($_SESSION["user"])) { ?>
+        <form method="post" action="">
+          <div class="modal-content">
+            <h4>Login Admin</h4>
+            <p style="color: #C00; text-align: center;"><b><?php if(isset($message)){ echo $message; } ?></b></p>
+              <div class="row">
+                <div class="input-field col s12">
+                  <i class="material-icons prefix">account_box</i>
+                  <input id="icon_prefix" type="email" class="validate" name="email" required>
+                  <label for="icon_prefix">Email</label>
+                </div>
+                <div class="input-field col s12">
+                  <i class="material-icons prefix">lock</i>
+                  <input id="icon_telephone" type="password" name="password" class="validate" required>
+                  <label for="icon_telephone">Password</label>
+                </div>
+                <label class="remember">
+                  <input type="checkbox" name="remember" value="true"/>
+                  <span>Remember Me</span>
+                </label>
+              </div>
+          </div>
+          <div class="modal-footer">
+            <button class="waves-effect waves-light btn modal-close red darken-4"><i class="material-icons left">close</i>Tutup</button>
+            <input type="hidden" name="login" value="login">
+            <button type="submit" class="waves-effect waves-light btn light-green accent-4"><i class="material-icons left">input</i>Login</button>
+          </div>
+        </form>
+        <?php } ?>
+      </div>
+    </div>
 
     <div class="page-header">
       <div class="page-header-bg"></div>
