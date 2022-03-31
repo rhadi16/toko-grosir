@@ -32,9 +32,9 @@
   $view   = "penjualan.php";
 
   $column = [
-              'value'  => ['nama_barang'],
-              'label'  => ['Nama Barang'],
-              'type'   => ['text']
+              'value'  => ['nama_pelanggan', 'nama_barang'],
+              'label'  => ['Nama Pelanggan', 'Nama Barang'],
+              'type'   => ['text', 'text']
             ];
 
   $sel_qry = mysqli_query($mysqli, "SELECT * FROM penjualan");
@@ -47,6 +47,10 @@
 			<a class="waves-effect waves-light btn  light-blue darken-1" id="tambah-kolom"><i class="material-icons left">add</i>Tambah Form Isian</a>
 			<div class="row">
 				<form action="func/penjualan_func.php?action=insert" enctype="multipart/form-data" method="post">
+				<div class="input-field col s12">
+					<input id="nama_pelanggan" type="text" class="validate" name="nama_pelanggan" required>
+				  <label for="nama_pelanggan">Nama Pelanggan</label>
+				</div>
 				<div class="element col s12" id="div_1">
 			    <div id="txt_1">
 			      <div class="card-panel bg">
@@ -151,6 +155,7 @@
 	        <thead>
 	          <tr>
 	          		<th>No.</th>
+	          		<th>Nama Pelanggan</th>
 	              <th>Nama Barang</th>
 	              <th>Quantity</th>
 	              <th>Harga Satuan</th>
@@ -172,13 +177,14 @@
 						  $dt = mysqli_query($mysqli, "$qry ORDER BY $orderby DESC");
 						}else{
 						//kondisi jika parameter kolom pencarian diisi
-						  $dt = mysqli_query($mysqli, "$qry WHERE $kolomCari LIKE '%$kolomKataKunci%'");
+						  $dt = mysqli_query($mysqli, "$qry AND $kolomCari LIKE '%$kolomKataKunci%'");
 						}
 
 						while($data = mysqli_fetch_array($dt)) {
 					?>
 	          <tr>
 	          	<td><?php echo $no; ?></td>
+	          	<td><?php echo $data['nama_pelanggan']; ?></td>
 	            <td><?php echo $data['nama_barang']; ?></td>
 	            <td><?php echo $data['jum_yg_dibeli']; ?></td>
 	            <td>

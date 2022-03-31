@@ -25,6 +25,9 @@
 			        		<a class="waves-effect waves-light btn yellow darken-1" href="penjualan.php">Kelola Penjualan</a>
 			        	</div>
 			        	<div class="col s12">
+			        		<a class="waves-effect waves-light btn amber darken-4" href="pesanan-masuk.php">Pesanan Masuk</a>
+			        	</div>
+			        	<div class="col s12">
 			        		<a class="waves-effect waves-light btn lime darken-1" href="cetak-semua-pembelian.php" target="_blank">Cetak Semua Barang Masuk</a>
 			        	</div>
 			        	<div class="col s12">

@@ -17,6 +17,12 @@ if (desc_in == "success-send") {
       'Silahkan Cek Email Anda Untuk Melihat Balasan Dari Admin',
       'success'
     )
+} else if (desc_in == "success-reg") {
+    Swal.fire(
+      'Berhasil Melakukan Registrasi!',
+      'Silahkan Login Sebagai Pelanggan',
+      'success'
+    )
 }
 
 $(document).ready(function(){

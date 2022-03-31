@@ -198,6 +198,14 @@ nav .brand-logo {
 	margin-bottom: 40px;
 }
 
+/* registrasi */
+.registrasi .card-panel {
+	margin-top: 50px;
+}
+.registrasi h4 {
+	margin: 0;
+}
+
 .footer {
 	border-top-left-radius: 10px;
 	border-top-right-radius: 10px;

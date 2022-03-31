@@ -8,7 +8,7 @@
 	$qry = "SELECT 
 						* 
 					FROM list_barang
-					WHERE tgl_expire <= CURDATE() + INTERVAL 2 MONTH";
+					WHERE tgl_expire <= CURDATE() + INTERVAL 3 MONTH";
 
 	$orderby = "tgl_expire";
 
@@ -40,7 +40,7 @@
       </div>
 
 			<div class="list">
-			<h5 class="title">List Barang yang Akan Expire Dalam 2 Bulan, Disarankan untuk Diberikan Diskon Atau Promo</h5>
+			<h5 class="title">List Barang yang Akan Expire Dalam 3 Bulan, Disarankan untuk Diberikan Diskon Atau Promo</h5>
 				<div class="card-panel">
 					<table class="striped centered responsive-table">
 		        <thead>
@@ -82,30 +82,44 @@
 
 		          <!-- Modal Structure -->
 						  <div id="input-dispro<?php echo $data['id_barang']; ?>" class="modal input-dispro">
-						  	<form action="func/list_barang_func.php?action=dispro" enctype="multipart/form-data" method="post">
-							    <div class="modal-content">
-							      <h4>Input Diskon/Promo</h4>
-							      <input type="hidden" name="id_barang" value="<?php echo $data['id_barang']; ?>">
-							      <div class="row">
-							      	<div class="input-field col s12">
-							          <input id="nama_barang" type="text" class="validate" name="nama_barang" value="<?php echo $data['nama_barang']; ?>" readonly>
-							          <label for="nama_barang">Nama Barang</label>
-							        </div>
-							        <div class="input-field col s12">
-							          <input id="promo" type="text" class="validate" name="promo" value="<?php echo $data['promo']; ?>">
-							          <label for="promo">Promo (Boleh Tidak Diisi)</label>
-							        </div>
-							        <div class="input-field col s12">
-							          <input id="diskon" type="number" class="validate" name="diskon" value="<?php echo $data['diskon']; ?>">
-							          <label for="diskon">Diskon (0-100)%</label>
-							        </div>
-					      		</div>
-							    </div>
-							    <div class="modal-footer">
-							      <a class="waves-effect waves-light btn modal-close red darken-4"><i class="material-icons left">close</i>Tutup</a>
-				      			<button type="submit" class="waves-effect waves-light btn light-green accent-4"><i class="material-icons left">add</i>Tambah</button>
-							    </div>
-						  	</form>
+						  	<?php 
+						  		if ($data['tgl_expire'] < date('Y-m-d')) {
+						  	?>
+						  	<div class="modal-content">
+						      <p style="color: #C00; text-align: center;"><b>Barang Sudah Expired</b></p>
+						    </div>
+						    <div class="modal-footer">
+						      <a class="waves-effect waves-light btn modal-close red darken-4"><i class="material-icons left">close</i>Tutup</a>
+			      			<a class="waves-effect waves-light btn light-green accent-4" href="list-barang.php">Ke List Barang</a>
+						    </div>
+						  	<?php 
+						  		} else {
+						  	?>
+							  	<form action="func/list_barang_func.php?action=dispro" enctype="multipart/form-data" method="post">
+								    <div class="modal-content">
+								      <h4>Input Diskon/Promo</h4>
+								      <input type="hidden" name="id_barang" value="<?php echo $data['id_barang']; ?>">
+								      <div class="row">
+								      	<div class="input-field col s12">
+								          <input id="nama_barang" type="text" class="validate" name="nama_barang" value="<?php echo $data['nama_barang']; ?>" readonly>
+								          <label for="nama_barang">Nama Barang</label>
+								        </div>
+								        <div class="input-field col s12">
+								          <input id="promo" type="text" class="validate" name="promo" value="<?php echo $data['promo']; ?>">
+								          <label for="promo">Promo (Boleh Tidak Diisi)</label>
+								        </div>
+								        <div class="input-field col s12">
+								          <input id="diskon" type="number" class="validate" name="diskon" value="<?php echo $data['diskon']; ?>">
+								          <label for="diskon">Diskon (0-100)%</label>
+								        </div>
+						      		</div>
+								    </div>
+								    <div class="modal-footer">
+								      <a class="waves-effect waves-light btn modal-close red darken-4"><i class="material-icons left">close</i>Tutup</a>
+					      			<button type="submit" class="waves-effect waves-light btn light-green accent-4"><i class="material-icons left">add</i>Tambah</button>
+								    </div>
+							  	</form>
+							  <?php } ?>
 						  </div>
 		        <?php $no++; } ?>
 		        </tbody>

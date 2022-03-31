@@ -57,11 +57,21 @@ $delay=min(max(($attempts-4),0)*2,30); //after 3rd wrong try, add a delay of (# 
 if ($attempts>3) {$message="Terlalu Banyak Percobaan, Silahkan Menunggu Beberapa Saat";break;}
 //***************************************************************
 
+if ($_POST["oten"] == "pelanggan") {
+  $sql = $db->prepare("SELECT * FROM pelanggan WHERE email=?");
+  $sql->bindParam(1, $_POST["email"]);
+  $sql->execute();
+  $rows = $sql->fetch(PDO::FETCH_ASSOC);  
 
-$sql = $db->prepare("SELECT * FROM utenti WHERE email=?");
-$sql->bindParam(1, $_POST["email"]);
-$sql->execute();
-$rows = $sql->fetch(PDO::FETCH_ASSOC);  
+  $oten = "pelanggan";
+} elseif ($_POST["oten"] == "admin") {
+  $sql = $db->prepare("SELECT * FROM utenti WHERE email=?");
+  $sql->bindParam(1, $_POST["email"]);
+  $sql->execute();
+  $rows = $sql->fetch(PDO::FETCH_ASSOC);  
+
+  $oten = "admin";
+}
 
 //check if password type is match with password in the database
 //using php function password_hash in the register.php and password_verify here
@@ -72,6 +82,7 @@ $checked = password_verify($_POST['password'].PEPPER, $rows["password"]);
 if ($checked) { //if email/pw are right:
     $message='password correct<br>enjoy content <a href=index.php>here</a>';
   $_SESSION['user'] = $rows["id"];
+  $_SESSION['utenti'] = $oten;
   
   //...and if remember me checked send the cookie
   if ($_POST["remember"]=="true") {
@@ -91,14 +102,19 @@ setcookie(
 }
 
 //redirect to page with content only for members
-echo '<script language="javascript"> window.location.href = "admin/index.php" </script>';
+if ($oten == "admin") {
+  echo '<script language="javascript"> window.location.href = "admin/index.php" </script>';
+} else {
+  echo '<script language="javascript"> window.location.href = "pelanggan/index.php" </script>';
+  echo '<script language="javascript"> alert("gagal") </script>';
+}
 
 //if email/pw are wrong 
 } else {
     $message=($attempts>1)?"Banyak Percobaan ($attempts)":"Anda Salah Memasukkan Email/Password";
 }
 
-
+echo '<script language="javascript"> console.log("arger") </script>';
 //save the access log
 $sql = $db->prepare("INSERT INTO log_accessi (ip,mail_immessa,accesso) VALUES (? ,? ,?)");
 $sql->bindParam(1, $_SERVER['REMOTE_ADDR']);
@@ -155,6 +171,7 @@ $sql->execute();
             <a href="#!" class="brand-logo">Mega Tony</a>
             <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
             <ul class="right hide-on-med-and-down">
+              <li><a class="waves-effect waves-light btn modal-trigger blue darken-3" href="registrasi.php">Registrasi</a></li>
               <li><a class="waves-effect waves-light btn modal-trigger blue darken-3" href="#login">Login</a></li>
             </ul>
           </div>
@@ -163,6 +180,7 @@ $sql->execute();
     </div>
 
     <ul class="sidenav" id="mobile-demo">
+      <li><a class="waves-effect waves-light btn modal-trigger blue darken-3" href="registrasi.php">Registrasi</a></li>
       <li><a class="waves-effect waves-light btn modal-trigger blue darken-3" href="#login">Login</a></li>
     </ul>
 
@@ -193,6 +211,14 @@ $sql->execute();
                   <i class="material-icons prefix">lock</i>
                   <input id="icon_telephone" type="password" name="password" class="validate" required>
                   <label for="icon_telephone">Password</label>
+                </div>
+                <div class="input-field col s12">
+                  <i class="material-icons prefix">account_box</i>
+                  <select name="oten" required>
+                    <option value="admin">Admin</option>
+                    <option value="pelanggan">Pelanggan</option>
+                  </select>
+                  <label>Login Sebagai</label>
                 </div>
                 <label class="remember">
                   <input type="checkbox" name="remember" value="true"/>
@@ -442,10 +468,12 @@ $sql->execute();
           </div>
         </div>
         <?php
-          error_reporting(0);
+          // error_reporting(0);
           $desc = $_GET['desc']; 
           if ($desc == "success-send") {
         ?>
+          <div class="desc-in" data-flashdata="<?php echo $desc; ?>"></div>
+        <?php } elseif ($desc == "success-reg") { ?>
           <div class="desc-in" data-flashdata="<?php echo $desc; ?>"></div>
         <?php } ?>
       </div>

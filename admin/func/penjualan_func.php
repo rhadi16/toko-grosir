@@ -11,6 +11,7 @@
 		$jum_yg_dibeli = $_POST['jum_yg_dibeli'];
 		$tanggal 	   = $_POST['tanggal'];
 		$id_admin 	   = $_POST['id_admin'];
+		$nama_pelanggan= $_POST['nama_pelanggan'];
 
 		$jum_data = count($id_barang);
 
@@ -29,8 +30,8 @@
 			$tot_yg_dibeli[$i] = ($harga[$i] - $diskon[$i]) * $jum_yg_dibeli[$i];
 			$sisa_stok[$i]	   = $stok_awal[$i] - $jum_yg_dibeli[$i];
 
-			$result = mysqli_query($mysqli, "INSERT INTO penjualan (id, id_barang, jum_yg_dibeli, tot_yg_dibeli, tanggal, id_admin) 
-											 VALUES(null, '$id_brg[$i]', '$jum_yg_dibeli[$i]', '$tot_yg_dibeli[$i]', '$tanggal[$i]', '$id_admin[$i]')") or die(mysqli_error($mysqli));
+			$result = mysqli_query($mysqli, "INSERT INTO penjualan (id, id_barang, jum_yg_dibeli, tot_yg_dibeli, tanggal, id_admin, nama_pelanggan) 
+											 VALUES(null, '$id_brg[$i]', '$jum_yg_dibeli[$i]', '$tot_yg_dibeli[$i]', '$tanggal[$i]', '$id_admin[$i]', '$nama_pelanggan')") or die(mysqli_error($mysqli));
 			$result1= mysqli_query($mysqli, "UPDATE list_barang SET stok = '$sisa_stok[$i]' WHERE id_barang = '$id_brg[$i]'") 
 											or die(mysqli_error($mysqli));
 		}

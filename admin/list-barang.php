@@ -271,6 +271,8 @@
 		<div class="desc-in" data-flashdata="<?php echo $desc; ?>"></div>
 	<?php } elseif ($desc == "failed-del") { ?>
 		<div class="desc-in" data-flashdata="<?php echo $desc; ?>"></div>
+	<?php } elseif ($desc == "exp") { ?>
+		<div class="desc-in" data-flashdata="<?php echo $desc; ?>"></div>
 	<?php } ?>
 
 	<script type="text/javascript">
@@ -310,6 +312,12 @@
 	  	Swal.fire(
 	      'Gagal!',
 	      'Anda Gagal Melakukan Penghapusan Barang',
+	      'error'
+	    )
+	  } else if (desc_in == "exp") {
+	  	Swal.fire(
+	      'Gagal!',
+	      'Barang Telah Expire',
 	      'error'
 	    )
 	  }

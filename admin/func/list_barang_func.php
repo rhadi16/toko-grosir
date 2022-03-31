@@ -24,16 +24,23 @@
 		// Set path folder tempat menyimpan gambarnya
 		$path = "../foto_brg/".$foto;
 
-		if (move_uploaded_file($tmp_file, $path)) {
-			$result = mysqli_query($mysqli, "INSERT INTO list_barang (id_barang, nama_barang, harga, stok, promo, diskon, satuan, unit, tgl_expire, foto) 
-											 VALUES(null, '$nama_barang', '$harga', '$stok', '$promo', '$diskon', '$satuan', '$unit', '$tgl_expire', '$foto')") or die(mysqli_error($mysqli));
+		$tgl = date('d-m-y');
 
-			if ($result) {
-				echo '<script language="javascript"> window.location.href = "../list-barang.php?desc=success-in" </script>';
-			} else {
-				echo '<script language="javascript"> window.location.href = "../list-barang.php?desc=failed-in" </script>';
+		if ($tgl <= $tgl_expire) {
+			echo '<script language="javascript"> window.location.href = "../list-barang.php?desc=exp" </script>';
+		} else {
+			if (move_uploaded_file($tmp_file, $path)) {
+				$result = mysqli_query($mysqli, "INSERT INTO list_barang (id_barang, nama_barang, harga, stok, promo, diskon, satuan, unit, tgl_expire, foto) 
+												 VALUES(null, '$nama_barang', '$harga', '$stok', '$promo', '$diskon', '$satuan', '$unit', '$tgl_expire', '$foto')") or die(mysqli_error($mysqli));
+
+				if ($result) {
+					echo '<script language="javascript"> window.location.href = "../list-barang.php?desc=success-in" </script>';
+				} else {
+					echo '<script language="javascript"> window.location.href = "../list-barang.php?desc=failed-in" </script>';
+				}
 			}
 		}
+		
 	} elseif($action == "update") {
 
 		$id_barang 	 = $_POST['id_barang'];
