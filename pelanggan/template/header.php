@@ -9,6 +9,10 @@
 	    // fungsi redirect menggunakan javascript
 	    echo '<script language="javascript"> window.location.href = "../index.php" </script>';
 	}
+  if($_SESSION['utenti'] != "pelanggan"){
+      // fungsi redirect menggunakan javascript
+      echo '<script language="javascript"> window.location.href = "../admin" </script>';
+  }
 ?>
 
 <!DOCTYPE html>

@@ -1,50 +1,50 @@
 <?php 
 	include('template/header.php');
-	include('../admin/asset/datetime/datetimeFormat.php');
+	include('asset/datetime/datetimeFormat.php');
 ?>
 
 <?php 
   $sess = $_SESSION['user'];
+  $id_pel = $_GET['id_pel'];
 
 	$qry = "SELECT 
-					a.id,
-					a.id_barang,
-					b.nama_barang,
-					b.harga,
-					a.jum_yg_dibeli,
-					b.diskon,
-					b.promo,
-					a.tanggal
-				FROM list_pesanan a
-				LEFT JOIN list_barang b ON a.id_barang = b.id_barang
-				WHERE id_pelanggan = $sess";
+						a.id,
+						a.id_pelanggan,
+						c.nama,
+						c.email,
+						a.id_barang,
+						b.nama_barang,
+						b.harga,
+						a.jum_yg_dibeli,
+						b.diskon,
+						b.promo,
+						a.tanggal
+					FROM list_pesanan a
+					LEFT JOIN list_barang b ON a.id_barang = b.id_barang
+					LEFT JOIN pelanggan c ON a.id_pelanggan = c.id";
 
 	$orderby = "tanggal";
 
-  $view   = "riwayat-pesan.php";
+  $view   = "pesanan-masuk.php";
 
   $column = [
-              'value'  => ['nama_barang'],
-              'label'  => ['Nama Barang'],
-              'type'   => ['text']
+              'value'  => ['nama', 'email','nama_barang'],
+              'label'  => ['Nama Pelanggan/Toko', 'Email', 'Nama Barang'],
+              'type'   => ['text', 'text', 'text']
             ];
 
   $sel_qry = mysqli_query($mysqli, $qry);
   $jum_data = mysqli_num_rows($sel_qry);
-
-
-  $dt1 = mysqli_query($mysqli, "SELECT * FROM pelanggan WHERE id = $sess");
-	$d1  = mysqli_fetch_array($dt1);
 ?>
 
 	<section id="saran-diskon">
 		<div class="container">
-			<h5 class="title">Daftar Pesanan <?php echo $d1['nama']; ?></h5>
+			<h5 class="title">Detail Pesanan Pelanggan</h5>
+			<a class="waves-effect waves-light btn light-blue darken-1" id="tambah-kolom" href="pesanan-masuk.php"><i class="material-icons left">near_me</i>Daftar Pesanan</a>
 			<?php 
 			 if ($jum_data == 0) {
 			?>
-				<a class="waves-effect waves-light btn light-blue darken-1" id="tambah-kolom" href="pesan.php"><i class="material-icons left">near_me</i>Pesan Barang</a>
-				<h5 class="center-align title-form red-text text-darken-1">Belum Ada Barang Yang Anda Pesan</h5>	
+				<h5 class="center-align title-form red-text text-darken-1">Belum Ada Pesanan Yang Masuk</h5>	
 			<?php } else { ?>
 
       <div class="container pencarian-barang">
@@ -54,20 +54,18 @@
       </div>
 
 			<div class="list">
-				<a class="waves-effect waves-light btn blue darken-2" href="cetak-pesanan.php"  target="_blank"><i class="material-icons left">print</i>Cetak Pesanan</a>
-				<a class="waves-effect waves-light btn light-blue darken-1" id="tambah-kolom" href="pesan.php"><i class="material-icons left">near_me</i>Pesan Barang</a>
 				<div class="card-panel">
 					<table class="striped centered responsive-table">
 		        <thead>
 		          <tr>
 	          		<th>No.</th>
+	          		<th>Nama Pelanggan/Toko</th>
 	              <th>Nama Barang</th>
 	              <th>Promo</th>
 	              <th>Diskon</th>
 	              <th>Harga</th>
 	              <th>Quantity</th>
 	              <th>Total</th>
-	              <th>Tanggal</th>
 	              <th>Aksi</th>
 		          </tr>
 		        </thead>
@@ -81,16 +79,17 @@
 
 							//kondisi jika parameter pencarian kosong
 							if($kolomCari=="" && $kolomKataKunci==""){
-							  $dt = mysqli_query($mysqli, "$qry ORDER BY $orderby ASC");
+							  $dt = mysqli_query($mysqli, "$qry WHERE id_pelanggan = '$id_pel' ORDER BY $orderby ASC");
 							}else{
 							//kondisi jika parameter kolom pencarian diisi
-							  $dt = mysqli_query($mysqli, "$qry AND $kolomCari LIKE '%$kolomKataKunci%' ORDER BY $orderby ASC");
+							  $dt = mysqli_query($mysqli, "$qry WHERE $kolomCari LIKE '%$kolomKataKunci%' AND id_pelanggan = '$id_pel' ORDER BY $orderby ASC");
 							}
 
 							while($data = mysqli_fetch_array($dt)) {
 						?>
 		          <tr>
 		          	<td><?php echo $no; ?></td>
+		          	<td><?php echo $data['nama']; ?></td>
 		            <td><?php echo $data['nama_barang']; ?></td>
 		            <td><?php echo $data['promo']; ?></td>
 		            <td><?php echo $data['diskon']; ?>%</td>
@@ -118,10 +117,10 @@
                 		echo number_format($total,0,",",".");
                 	} ?> 
 		            </td>
-		            <td><?php echo datetimeFormat::TanggalIndo($data['tanggal']); ?></td>
 		            <td>
 		            	<a class="waves-effect waves-light btn modal-trigger lime darken-1" href="#edit-pesanan<?php echo $data['id']; ?>">Edit Quantity</a>
 		            	<a class="waves-effect waves-light btn modal-trigger red darken-1 hapus-pesanan<?php echo $data['id']; ?>" style="cursor: pointer;">Hapus Pesanan</a>
+		            	<a class="waves-effect waves-light btn modal-trigger" href="#konfir-pesanan<?php echo $data['id']; ?>">Konfirmasi Pesanan</a>
 		            </td>
 		          </tr>
 
@@ -137,7 +136,7 @@
 					          confirmButtonText: 'Ya, Yakin!'
 					        }).then((result) => {
 					          if (result.isConfirmed) {
-					            window.location.href = "<?php echo 'func/pesan_func.php?action=delete&id='.$data['id'].'&id_barang='.$data['id_barang'] ?>";
+					            window.location.href = "<?php echo 'func/pesan_func.php?action=delete&id='.$data['id'].'&id_barang='.$data['id_barang'].'&id_pelanggan='.$id_pel ?>";
 					          }
 					        })
 					      });
@@ -150,6 +149,7 @@
 							      <h4>Input Diskon/Promo</h4>
 							      <input type="hidden" name="id" value="<?php echo $data['id']; ?>">
 							      <input type="hidden" name="id_barang" value="<?php echo $data['id_barang']; ?>">
+							      <input type="hidden" name="id_pelanggan" value="<?php echo $id_pel ?>">
 							      <div class="row">
 							      	<div class="input-field col s12">
 							          <input id="nama_barang" type="text" class="validate" name="nama_barang" value="<?php echo $data['nama_barang']; ?>" readonly>
@@ -165,6 +165,42 @@
 							    <div class="modal-footer">
 							      <a class="waves-effect waves-light btn modal-close red darken-4"><i class="material-icons left">close</i>Tutup</a>
 				      			<button type="submit" class="waves-effect waves-light btn light-green accent-4"><i class="material-icons left">add</i>Ubah</button>
+							    </div>
+						  	</form>
+						  </div>
+
+						  <!-- Modal Structure -->
+						  <div id="konfir-pesanan<?php echo $data['id']; ?>" class="modal input-dispro">
+						  	<form action="func/pesan_func.php?action=insert" enctype="multipart/form-data" method="post">
+							    <div class="modal-content">
+							      <h4>Konfirmasi Pesanan</h4>
+							      <input type="hidden" name="id" value="<?php echo $data['id']; ?>">
+							      <input type="hidden" name="id_admin" value="<?php echo $sess; ?>">
+							      <input type="hidden" name="id_barang" value="<?php echo $data['id_barang']; ?>">
+							      <input type="hidden" name="id_pelanggan" value="<?php echo $id_pel ?>">
+							      <div class="row">
+							      	<div class="input-field col s12">
+							          <input id="nama_pelanggan" type="text" class="validate" name="nama_pelanggan" value="<?php echo $data['nama']; ?>" readonly>
+							          <label for="nama_pelanggan">Nama Pelanggan</label>
+							        </div>
+							      	<div class="input-field col s12">
+							          <input id="nama_barang" type="text" class="validate" name="nama_barang" value="<?php echo $data['nama_barang']; ?>" readonly>
+							          <label for="nama_barang">Nama Barang</label>
+							        </div>
+							        <input type="hidden" name="tanggal" value="<?php echo $data['tanggal']; ?>">
+							        <div class="input-field col s12">
+							          <input id="jum_yg_dibeli" type="text" class="validate" name="jum_yg_dibeli" value="<?php echo $data['jum_yg_dibeli']; ?>" readonly>
+							          <label for="jum_yg_dibeli">Quantity</label>
+							        </div>
+							        <div class="input-field col s12">
+							          <input id="tot_yg_dibeli" type="text" class="validate" name="tot_yg_dibeli" value="<?php echo $total; ?>" readonly>
+							          <label for="tot_yg_dibeli">Total Harga</label>
+							        </div>
+					      		</div>
+							    </div>
+							    <div class="modal-footer">
+							      <a class="waves-effect waves-light btn modal-close red darken-4"><i class="material-icons left">close</i>Tutup</a>
+				      			<button type="submit" class="waves-effect waves-light btn light-green accent-4"><i class="material-icons left">add</i>Konfirmasi</button>
 							    </div>
 						  	</form>
 						  </div>
@@ -188,6 +224,8 @@
 	<?php } elseif ($desc == "success-del") { ?>
 		<div class="desc-in" data-flashdata="<?php echo $desc; ?>"></div>
 	<?php } elseif ($desc == "failed-del") { ?>
+		<div class="desc-in" data-flashdata="<?php echo $desc; ?>"></div>
+	<?php } elseif ($desc == "success-in") { ?>
 		<div class="desc-in" data-flashdata="<?php echo $desc; ?>"></div>
 	<?php } elseif ($desc == "failed-ed2") { ?>
 		<div class="desc-in" data-flashdata="<?php echo $desc; ?>"></div>
@@ -219,10 +257,22 @@
 	      'Anda Gagal Melakukan Penghapusan Pesanan',
 	      'error'
 	    )
+	  } else if (desc_in == "success-in") {
+	  	Swal.fire(
+	      'Berhasil!',
+	      'Anda Telah Melakukan Konfirmasi Pesanan',
+	      'success'
+	    )
+	  } else if (desc_in == "failed-in") {
+	  	Swal.fire(
+	      'Gagal!',
+	      'Anda Gagal Melakukan Konfirmasi Pesanan',
+	      'error'
+	    )
 	  } else if (desc_in == "failed-ed2") {
 	  	Swal.fire(
 	      'Gagal!',
-	      'Jumlah yang Anda Pesan Melebihi Stok',
+	      'Jumlah Quantity Melebihi Stok',
 	      'error'
 	    )
 	  }

@@ -189,7 +189,7 @@ $sql->execute();
       <div id="login" class="modal container">
         <?php if (isset($konf_login)) { ?>
         <div class="modal-content">
-          <h4>Login Admin</h4>
+          <h4>Form Login</h4>
           <p><?php echo $konf_login; ?></p>
         </div>
         <div class="modal-footer">
@@ -199,7 +199,7 @@ $sql->execute();
         <?php if (empty($_SESSION["user"])) { ?>
         <form method="post" action="">
           <div class="modal-content">
-            <h4>Login Admin</h4>
+            <h4>Form Login</h4>
             <p style="color: #C00; text-align: center;"><b><?php if(isset($message)){ echo $message; } ?></b></p>
               <div class="row">
                 <div class="input-field col s12">

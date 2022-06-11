@@ -70,6 +70,31 @@
 				          <input id="tgl_expire" type="date" class="validate" name="tgl_expire" required>
 				          <label for="tgl_expire">Tanggal Expire</label>
 				        </div>
+				        <div class="input-field col s6">
+				          <input id="usia_awal" type="number" class="validate" name="usia_awal" required>
+				          <label for="usia_awal">Mulai Usia</label>
+				        </div>
+				        <div class="input-field col s6">
+				          <input id="usia_akhir" type="number" class="validate" name="usia_akhir" required>
+				          <label for="usia_akhir">Sampai Usia</label>
+				        </div>
+				        <div class="input-field col s12">
+							    <select name="kalangan" required>
+							      <option value="Remaja">Remaja</option>
+							      <option value="Dewasa">Dewasa</option>
+							      <option value="Orang Tua">Orang Tua</option>
+							      <option value="Usia Lanjut">Usia Lanjut</option>
+							    </select>
+							    <label>Kalangan</label>
+							  </div>
+							  <div class="input-field col s12">
+							    <select name="kat_jkel" required>
+							      <option value="p">Wanita</option>
+							      <option value="l">Pria</option>
+							      <option value="pl">Pria dan Wanita</option>
+							    </select>
+							    <label>Kategori Jenis Kelamin</label>
+							  </div>
 				        <div class="file-field col s12 input-field">
 						      <div class="btn">
 						        <span>Foto Barang</span>
@@ -153,6 +178,26 @@
 		                    <td class="center-align"><?php echo datetimeFormat::TanggalIndo($data['tgl_expire']); ?></td>
 		                  </tr>
 		                  <tr>
+		                    <th>Rentang Usia</th>
+		                    <td class="center-align"><?php echo $data['usia_awal'].' - '.$data['usia_akhir']; ?></td>
+		                  </tr>
+		                  <tr>
+		                    <th>Kalangan</th>
+		                    <td class="center-align"><?php echo $data['kalangan']; ?></td>
+		                  </tr>
+		                  <tr>
+		                    <th>Kategori Jenis Kelamin</th>
+		                    <td class="center-align"><?php 
+		                    	if ($data['kat_jkel'] == 'p') {
+		                    		echo "Wanita";
+		                    	} elseif ($data['kat_jkel'] == 'l') {
+		                    		echo "Pria";
+		                    	} else {
+		                    		echo "Pria dan Wanita <br>";
+		                    	}
+		                    ?></td>
+		                  </tr>
+		                  <tr>
 		                    <th>aksi</th>
 		                    <td class="center-align">
 		                    	<a class="waves-effect waves-light btn modal-trigger lime darken-1" href="#edit-barang<?php echo $data['id_barang']; ?>">edit</a>
@@ -230,6 +275,31 @@
 						          <input id="tgl_expire" type="date" class="validate" name="tgl_expire" required value="<?php echo $data['tgl_expire']; ?>">
 						          <label for="tgl_expire">Tanggal Expire</label>
 						        </div>
+						        <div class="input-field col s6">
+						          <input id="usia_awal" type="number" class="validate" name="usia_awal" required value="<?php echo $data['usia_awal']; ?>">
+						          <label for="usia_awal">Mulai Usia</label>
+						        </div>
+						        <div class="input-field col s6">
+						          <input id="usia_akhir" type="number" class="validate" name="usia_akhir" required value="<?php echo $data['usia_akhir']; ?>">
+						          <label for="usia_akhir">Sampai Usia</label>
+						        </div>
+						        <div class="input-field col s12">
+									    <select name="kalangan" required>
+									      <option value="Remaja" <?php if($data['kalangan']=="Remaja"){ echo 'selected';} ?>>Remaja</option>
+									      <option value="Dewasa" <?php if($data['kalangan']=="Dewasa"){ echo 'selected';} ?>>Dewasa</option>
+									      <option value="Orang Tua" <?php if($data['kalangan']=="Orang Tua"){ echo 'selected';} ?>>Orang Tua</option>
+									      <option value="Usia Lanjut" <?php if($data['kalangan']=="Usia Lanjut"){ echo 'selected';} ?>>Usia Lanjut</option>
+									    </select>
+									    <label>Kalangan</label>
+									  </div>
+									  <div class="input-field col s12">
+									    <select name="kat_jkel" required>
+									      <option value="p" <?php if($data['kat_jkel']=="p"){ echo 'selected';} ?>>Wanita</option>
+									      <option value="l" <?php if($data['kat_jkel']=="l"){ echo 'selected';} ?>>Pria</option>
+									      <option value="pl" <?php if($data['kat_jkel']=="pl"){ echo 'selected';} ?>>Pria dan Wanita</option>
+									    </select>
+									    <label>Kategori Jenis Kelamin</label>
+									  </div>
 						        <div class="file-field col s12 input-field">
 								      <div class="btn">
 								        <span>Foto Barang</span>

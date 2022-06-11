@@ -1,3 +1,15 @@
+$(document).ready(function(){
+    $('.sidenav').sidenav();
+
+    $('.modal').modal();
+
+    $('.tooltipped').tooltip();
+
+    $('select').formSelect();
+
+    $('.swal2-popup').find('div[class$="select-wrapper"]').remove();
+});
+
 var tw = new Date();
 if (tw.getTimezoneOffset() == 0) (a=tw.getTime() + ( 7 *60*60*1000))
 else (a=tw.getTime());
@@ -24,15 +36,3 @@ if (desc_in == "success-send") {
       'success'
     )
 }
-
-$(document).ready(function(){
-    $('.sidenav').sidenav();
-
-    $('.modal').modal();
-
-    $('.tooltipped').tooltip();
-
-    $('select').formSelect();
-
-    $('.swal2-popup').find('div[class$="select-wrapper"]').remove();
-});

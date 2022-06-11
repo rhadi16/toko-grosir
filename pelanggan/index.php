@@ -20,7 +20,7 @@
 			        		<a class="waves-effect waves-light btn amber darken-1" href="pesan.php">Pesan Barang</a>
 			        	</div>
 			        	<div class="col s12">
-			        		<a class="waves-effect waves-light btn yellow darken-1" href="riwayat-pesan.php">Riwayat Pesanan</a>
+			        		<a class="waves-effect waves-light btn yellow darken-1" href="riwayat-pesan.php">Daftar Pesanan</a>
 			        	</div>
 			        </div>
 			      </div>
@@ -43,6 +43,10 @@
 			        <div class="input-field col s12">
 			          <input id="nama" type="text" class="validate" name="nama" required value="<?php echo $d['nama']; ?>">
 			          <label for="nama">Nama Pemilik/Toko</label>
+			        </div>
+			        <div class="input-field col s12">
+			          <input id="usia" type="text" class="validate" name="usia" required value="<?php echo $d['usia']; ?>">
+			          <label for="usia">Usia Pemilik/Toko</label>
 			        </div>
 			        <div class="input-field col s12">
 			          <input id="alamat" type="text" class="validate" name="alamat" required value="<?php echo $d['alamat']; ?>">

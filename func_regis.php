@@ -43,12 +43,14 @@ if ($exists) {echo '<script language="javascript"> window.location.href = "../pe
 $hash = password_hash($_POST['password'].PEPPER, PASSWORD_DEFAULT, ['cost' => 12]);
 
 try {
-$sql = $db->prepare("INSERT INTO pelanggan (email, nama, alamat, no_wa, password) VALUES (? ,?, ?, ?, ?)");
+$sql = $db->prepare("INSERT INTO pelanggan (email, nama, jkel, alamat, no_wa, password, tgl_lahir) VALUES (? ,?, ?, ?, ?, ?, ?)");
 $sql->bindParam(1, $_POST["email"]);
 $sql->bindParam(2, $_POST["nama"]);
-$sql->bindParam(3, $_POST["alamat"]);
-$sql->bindParam(4, $_POST["no_wa"]);
-$sql->bindParam(5, $hash);
+$sql->bindParam(3, $_POST["jkel"]);
+$sql->bindParam(4, $_POST["alamat"]);
+$sql->bindParam(5, $_POST["no_wa"]);
+$sql->bindParam(6, $hash);
+$sql->bindParam(7, $_POST["tgl_lahir"]);
 $sql->execute();
 } catch (PDOException $e) {
 $error="Error during ";break;

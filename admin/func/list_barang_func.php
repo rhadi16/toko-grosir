@@ -15,6 +15,10 @@
 		$satuan 	 = $_POST['satuan'];
 		$unit 		 = $_POST['unit'];
 		$tgl_expire  = $_POST['tgl_expire'];
+		$usia_awal	 = $_POST['usia_awal'];
+		$usia_akhir	 = $_POST['usia_akhir'];
+		$kalangan	 = $_POST['kalangan'];
+		$kat_jkel	 = $_POST['kat_jkel'];
 		// Ambil Data yang Dikirim dari Form
 		$nama_file = $_FILES['file_name']['name'];
 		$tmp_file  = $_FILES['file_name']['tmp_name'];
@@ -24,14 +28,14 @@
 		// Set path folder tempat menyimpan gambarnya
 		$path = "../foto_brg/".$foto;
 
-		$tgl = date('d-m-y');
+		$tgl = date('d-m-Y');
 
-		if ($tgl <= $tgl_expire) {
+		if (strtotime($tgl) >= strtotime($tgl_expire)) {
 			echo '<script language="javascript"> window.location.href = "../list-barang.php?desc=exp" </script>';
 		} else {
 			if (move_uploaded_file($tmp_file, $path)) {
-				$result = mysqli_query($mysqli, "INSERT INTO list_barang (id_barang, nama_barang, harga, stok, promo, diskon, satuan, unit, tgl_expire, foto) 
-												 VALUES(null, '$nama_barang', '$harga', '$stok', '$promo', '$diskon', '$satuan', '$unit', '$tgl_expire', '$foto')") or die(mysqli_error($mysqli));
+				$result = mysqli_query($mysqli, "INSERT INTO list_barang (id_barang, nama_barang, harga, stok, promo, diskon, satuan, unit, tgl_expire, foto, usia_awal, usia_akhir, kalangan, kat_jkel) 
+												 VALUES(null, '$nama_barang', '$harga', '$stok', '$promo', '$diskon', '$satuan', '$unit', '$tgl_expire', '$foto', '$usia_awal', '$usia_akhir', '$kalangan', '$kat_jkel')") or die(mysqli_error($mysqli));
 
 				if ($result) {
 					echo '<script language="javascript"> window.location.href = "../list-barang.php?desc=success-in" </script>';
@@ -52,6 +56,10 @@
 		$satuan 	 = $_POST['satuan'];
 		$unit 		 = $_POST['unit'];
 		$tgl_expire  = $_POST['tgl_expire'];
+		$usia_awal	 = $_POST['usia_awal'];
+		$usia_akhir	 = $_POST['usia_akhir'];
+		$kalangan	 = $_POST['kalangan'];
+		$kat_jkel	 = $_POST['kat_jkel'];
 		$file_name_sebelum = $_POST['file_name_sebelum'];
 		// Ambil Data yang Dikirim dari Form
 		$nama_file = $_FILES['file_name']['name'];
@@ -74,7 +82,11 @@
 				  									   satuan      = '$satuan',
 				  									   unit        = '$unit',
 				  									   tgl_expire  = '$tgl_expire',
-				  									   foto    	   = '$foto'
+				  									   foto    	   = '$foto',
+				  									   usia_awal   = '$usia_awal',
+				  									   usia_akhir  = '$usia_akhir',
+				  									   kalangan    = '$kalangan',
+				  									   kat_jkel	   = '$kat_jkel'
 				  									   WHERE id_barang = $id_barang
 				  									") or die(mysqli_error($mysqli));
 
@@ -96,7 +108,11 @@
 				  									   satuan      = '$satuan',
 				  									   unit        = '$unit',
 				  									   tgl_expire  = '$tgl_expire',
-				  									   foto    	   = '$file_name_sebelum'
+				  									   foto    	   = '$file_name_sebelum',
+				  									   usia_awal   = '$usia_awal',
+				  									   usia_akhir  = '$usia_akhir',
+				  									   kalangan    = '$kalangan',
+				  									   kat_jkel	   = '$kat_jkel'
 				  									   WHERE id_barang = $id_barang
 				  									") or die(mysqli_error($mysqli));
 

@@ -9,6 +9,10 @@
 	    // fungsi redirect menggunakan javascript
 	    echo '<script language="javascript"> window.location.href = "../index.php" </script>';
 	}
+  if($_SESSION['utenti'] != "admin"){
+      // fungsi redirect menggunakan javascript
+      echo '<script language="javascript"> window.location.href = "../pelanggan" </script>';
+  }
 ?>
 
 <!DOCTYPE html>
@@ -35,13 +39,7 @@
             <a href="index.php" class="brand-logo">Mega Tony</a>
             <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
             <ul class="right hide-on-med-and-down">
-              <li><a href="index.php">Utama</a></li>
-              <?php if ($_SESSION['user'] == 1) { ?>
-                <li><a href="pegawai.php">Pegawai</a></li>
-              <?php } ?>
-              <li><a href="list-barang.php">Kelola Barang</a></li>
-              <li><a href="pembelian.php">Kelola Pembelian</a></li>
-              <li><a href="penjualan.php">Kelola Penjualan</a></li>
+              <li><a href="index.php">Beranda</a></li>
               <li><a class="waves-effect waves-light btn modal-trigger red darken-4 confirmation-logout" style="cursor: pointer;">Logout</a></li>
             </ul>
           </div>
@@ -50,11 +48,7 @@
     </div>
 
     <ul class="sidenav" id="mobile-demo">
-      <li><a href="index.php">Utama</a></li>
-      <li><a href="pegawai.php">Pegawai</a></li>
-      <li><a href="list-barang.php">Kelola Barang</a></li>
-      <li><a href="pembelian.php">Kelola Pembelian</a></li>
-      <li><a href="penjualan.php">Kelola Penjualan</a></li>
+      <li><a href="index.php">Beranda</a></li>
       <li><a class="waves-effect waves-light btn modal-trigger red darken-4 confirmation-logout" style="cursor: pointer;">Logout</a></li>
     </ul>
 

@@ -27,6 +27,14 @@
                 <label for="nama">Nama Pemilik/Toko</label>
               </div>
               <div class="input-field col s12">
+                <select name="jkel" required>
+                  <option value="" selected>Pilih Jenis Kelamin</option>
+                  <option value="l">Laki-laki</option>
+                  <option value="p">Perempuan</option>
+                </select>
+                <label>Jenis Kelamin</label>
+              </div>
+              <div class="input-field col s12">
                 <input id="alamat" type="text" class="validate" name="alamat" required>
                 <label for="alamat">Alamat Pemilik/Toko</label>
               </div>
@@ -37,6 +45,10 @@
               <div class="input-field col s12">
                 <input id="email" type="email" class="validate" name="email" required>
                 <label for="email">Email</label>
+              </div>
+              <div class="input-field col s12">
+                <input id="tgl_lahir" type="date" class="validate" name="tgl_lahir" required>
+                <label for="tgl_lahir">Tanggal Lahir Anda</label>
               </div>
               <div class="input-field col s12">
                 <input id="password" type="password" name="password" class="validate" required>
