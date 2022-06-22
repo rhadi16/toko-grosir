@@ -62,29 +62,35 @@ CREATE TABLE IF NOT EXISTS `list_barang` (
   `unit` int(11) DEFAULT NULL,
   `tgl_expire` date DEFAULT NULL,
   `foto` text DEFAULT NULL,
+  `usia_awal` int(11) DEFAULT NULL,
+  `usia_akhir` int(11) DEFAULT NULL,
+  `kalangan` varchar(50) DEFAULT NULL,
+  `kat_jkel` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`id_barang`)
-) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8mb4;
 
--- Dumping data for table mega-tony.list_barang: ~15 rows (approximately)
+-- Dumping data for table mega-tony.list_barang: ~19 rows (approximately)
 /*!40000 ALTER TABLE `list_barang` DISABLE KEYS */;
-INSERT INTO `list_barang` (`id_barang`, `nama_barang`, `harga`, `stok`, `promo`, `diskon`, `satuan`, `unit`, `tgl_expire`, `foto`) VALUES
-  (1, 'Oreo Besar', 10000, 175, 'Beli 2 gratis 1', 10, 'pcs', 1, '2022-05-21', '1722776945oreo.jpg'),
-  (2, 'Minyak Goreng', 15000, 120, '', 0, 'pcs', 1, '2022-07-25', 'minyak.jpg'),
-  (3, 'Kalpa', 2000, 189, '', 5, 'pcs', 1, '2022-12-25', '329447873kalpa.jpg'),
-  (4, 'Beng-beng', 1000, 138, '', 0, 'pcs', 1, '2022-04-25', '330009499bengbeng.jpg'),
-  (5, 'Wafer Classic', 10000, 300, 'Beli 2 gratis 1', 0, 'pcs', 1, '2024-02-25', '495192766classic.jpg'),
-  (6, 'Gabing Chocolate', 12000, 184, '', 10, 'pcs', 1, '2022-03-25', '709823059chocolate.jpg'),
-  (7, 'Pillows', 12000, 102, '', 0, 'pcs', 1, '2022-12-25', '798035465pillows.jpg'),
-  (8, 'Wafer Diabetasol', 15000, 50, '', 0, 'pcs', 1, '2022-11-25', '898971797diabetasol.jpg'),
-  (9, 'Wafer Superstar', 2000, 100, '', 0, 'pcs', 1, '2022-04-25', '1116721285superstar.jpg'),
-  (10, 'Wafer Knoppers', 5000, 80, '', 5, 'pcs', 1, '2022-03-25', '1530580760knoppers.jpg'),
-  (11, 'Astor', 1000, 70, '', 0, 'pcs', 1, '2022-04-25', '1591523232astor.jpg'),
-  (12, 'Wafer Nabati', 15000, 45, '', 10, 'pcs', 1, '2022-12-25', '1627113236nabati.jpg'),
-  (13, 'Wafello', 4000, 30, '', 0, 'pcs', 1, '2022-04-25', '1642042847wafello.jpg'),
-  (14, 'Getgit', 2000, 59, '', 4, 'pcs', 1, '2022-03-25', '1661546435getgit.jpg'),
-  (15, 'Wafer Tango', 8000, 56, 'Beli 3 Gratis Piring', 0, 'pcs', 1, '2023-01-25', '1813747564tango.jpg'),
-  (16, 'Wafer Ovaltine', 10000, 78, '', 4, 'pcs', 1, '2022-04-25', '1970758816ovaltine.jpg'),
-  (17, 'Wafer Gery', 5000, 30, '', 0, 'pcs', 1, '2024-03-25', '1998018935gery.jpg');
+INSERT INTO `list_barang` (`id_barang`, `nama_barang`, `harga`, `stok`, `promo`, `diskon`, `satuan`, `unit`, `tgl_expire`, `foto`, `usia_awal`, `usia_akhir`, `kalangan`, `kat_jkel`) VALUES
+  (1, 'Oreo Besar', 10000, 174, 'Beli 2 gratis 1', 10, 'pcs', 1, '2024-05-21', '1722776945oreo.jpg', 15, 20, 'Remaja', 'pl'),
+  (2, 'Minyak Goreng', 15000, 118, '', 0, 'pcs', 1, '2022-08-25', 'minyak.jpg', 20, 70, 'Orang Tua', 'p'),
+  (3, 'Kalpa', 2000, 187, '', 5, 'pcs', 1, '2022-12-25', '329447873kalpa.jpg', 15, 25, 'Remaja', 'pl'),
+  (4, 'Beng-beng', 1000, 138, '', 0, 'pcs', 1, '2023-04-25', '330009499bengbeng.jpg', 15, 25, 'Remaja', 'pl'),
+  (5, 'Wafer Classic', 10000, 300, 'Beli 2 gratis 1', 0, 'pcs', 1, '2024-02-25', '495192766classic.jpg', 15, 25, 'Remaja', 'pl'),
+  (6, 'Gabing Chocolate', 12000, 184, '', 10, 'pcs', 1, '2022-08-25', '709823059chocolate.jpg', 15, 38, 'Dewasa', 'pl'),
+  (7, 'Pillows', 12000, 105, '', 0, 'pcs', 1, '2022-12-25', '798035465pillows.jpg', 15, 25, 'Remaja', 'pl'),
+  (8, 'Wafer Diabetasol', 15000, 49, '', 0, 'pcs', 1, '2022-11-25', '898971797diabetasol.jpg', 35, 70, 'Orang Tua', 'pl'),
+  (9, 'Wafer Superstar', 2000, 100, '', 0, 'pcs', 1, '2022-08-25', '1116721285superstar.jpg', 15, 38, 'Dewasa', 'pl'),
+  (10, 'Wafer Knoppers', 5000, 80, '', 5, 'pcs', 1, '2022-09-25', '1530580760knoppers.jpg', 15, 25, 'Remaja', 'pl'),
+  (11, 'Astor', 1000, 70, '', 0, 'pcs', 1, '2023-04-25', '1591523232astor.jpg', 15, 38, 'Remaja', 'pl'),
+  (12, 'Wafer Nabati', 15000, 45, '', 10, 'pcs', 1, '2022-12-25', '1627113236nabati.jpg', 15, 38, 'Remaja', 'pl'),
+  (13, 'Wafello', 4000, 30, '', 0, 'pcs', 1, '2022-07-25', '1642042847wafello.jpg', 15, 38, 'Dewasa', 'pl'),
+  (14, 'Getgit', 2000, 59, '', 4, 'pcs', 1, '2022-08-25', '1661546435getgit.jpg', 15, 20, 'Dewasa', 'pl'),
+  (15, 'Wafer Tango', 8000, 56, 'Beli 3 Gratis Piring', 0, 'pcs', 1, '2023-01-25', '1813747564tango.jpg', 15, 30, 'Remaja', 'pl'),
+  (16, 'Wafer Ovaltine', 10000, 78, '', 4, 'pcs', 1, '2022-07-25', '1970758816ovaltine.jpg', 15, 38, 'Dewasa', 'pl'),
+  (17, 'Wafer Gery', 5000, 30, '', 0, 'pcs', 1, '2024-08-25', '1998018935gery.jpg', 15, 25, 'Remaja', 'pl'),
+  (19, 'Buavita Sedang', 10000, 149, '', 0, 'pcs', 1, '2023-04-16', '2145402575buavita.jpg', 15, 70, 'Dewasa', 'pl'),
+  (20, 'L-men Gain Mass', 123000, 450, '', 0, 'pcs', 1, '2023-05-06', '1797886072lmen.jpg', 25, 40, 'Dewasa', 'l');
 /*!40000 ALTER TABLE `list_barang` ENABLE KEYS */;
 
 -- Dumping structure for table mega-tony.list_pesanan
@@ -95,16 +101,16 @@ CREATE TABLE IF NOT EXISTS `list_pesanan` (
   `tanggal` date DEFAULT NULL,
   `id_pelanggan` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8mb4;
 
--- Dumping data for table mega-tony.list_pesanan: ~4 rows (approximately)
+-- Dumping data for table mega-tony.list_pesanan: ~1 rows (approximately)
 /*!40000 ALTER TABLE `list_pesanan` DISABLE KEYS */;
 INSERT INTO `list_pesanan` (`id`, `id_barang`, `jum_yg_dibeli`, `tanggal`, `id_pelanggan`) VALUES
-  (8, 2, 20, '2022-03-18', 3),
-  (9, 7, 3, '2022-03-19', 2),
-  (10, 1, 10, '2022-03-19', 2),
-  (11, 3, 1, '2022-03-31', 2),
-  (12, 4, 2, '2022-03-31', 2);
+  (14, 1, 1, '2022-04-05', 2),
+  (15, 8, 1, '2022-04-05', 2),
+  (16, 2, 1, '2022-04-13', 3),
+  (17, 2, 1, '2022-04-17', 2),
+  (18, 19, 1, '2022-06-09', 4);
 /*!40000 ALTER TABLE `list_pesanan` ENABLE KEYS */;
 
 -- Dumping structure for table mega-tony.log_accessi
@@ -115,9 +121,9 @@ CREATE TABLE IF NOT EXISTS `log_accessi` (
   `data` timestamp NOT NULL DEFAULT current_timestamp(),
   `accesso` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=83 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=130 DEFAULT CHARSET=utf8;
 
--- Dumping data for table mega-tony.log_accessi: ~55 rows (approximately)
+-- Dumping data for table mega-tony.log_accessi: ~105 rows (approximately)
 /*!40000 ALTER TABLE `log_accessi` DISABLE KEYS */;
 INSERT INTO `log_accessi` (`id`, `ip`, `mail_immessa`, `data`, `accesso`) VALUES
   (1, '::1', 'megatony@gmail.com', '2021-10-21 13:08:50', 1),
@@ -201,7 +207,54 @@ INSERT INTO `log_accessi` (`id`, `ip`, `mail_immessa`, `data`, `accesso`) VALUES
   (79, '::1', 'rhadi.indrawankkpi1@gmail.com', '2022-03-31 17:12:28', 1),
   (80, '::1', 'rhadi.indrawankkpi1@gmail.com', '2022-03-31 18:41:47', 1),
   (81, '::1', 'rhadi.indrawankkpi1@gmail.com', '2022-03-31 19:55:57', 1),
-  (82, '::1', 'rhadi.indrawankkpi@gmail.com', '2022-03-31 20:01:32', 1);
+  (82, '::1', 'rhadi.indrawankkpi@gmail.com', '2022-03-31 20:01:32', 1),
+  (83, '::1', 'rhadi.indrawankkpi1@gmail.com', '2022-04-01 13:54:13', 1),
+  (84, '::1', 'rhadi.indrawankkpi@gmail.com', '2022-04-01 13:55:29', 1),
+  (85, '::1', 'rhadi.indrawankkpi1@gmail.com', '2022-04-01 14:58:00', 1),
+  (86, '::1', 'indrawanrhadi@gmail.com', '2022-04-01 18:01:47', 0),
+  (87, '::1', 'indrawanrhadi@gmail.com', '2022-04-01 18:02:00', 0),
+  (88, '::1', 'indrawanrhadi@gmail.com', '2022-04-01 18:02:18', 1),
+  (89, '::1', 'rhadi.indrawankkpi@gmail.com', '2022-04-05 11:46:37', 1),
+  (90, '::1', 'rhadi.indrawankkpi@gmail.com', '2022-04-05 12:40:39', 1),
+  (91, '::1', 'rhadi.indrawankkpi1@gmail.com', '2022-04-05 13:02:08', 1),
+  (92, '::1', 'rhadi.indrawankkpi@gmail.com', '2022-04-05 13:06:57', 1),
+  (93, '::1', 'rhadi.indrawankkpi1@gmail.com', '2022-04-13 09:52:53', 0),
+  (94, '::1', 'rhadi.indrawankkpi1@gmail.com', '2022-04-13 09:53:10', 1),
+  (95, '::1', 'rhadi.indrawankkpi1@gmail.com', '2022-04-13 10:03:29', 1),
+  (96, '::1', 'rhadi.indrawankkpi1@gmail.com', '2022-04-13 10:23:12', 1),
+  (97, '::1', 'rhadi.indrawankkpi1@gmail.com', '2022-04-13 10:47:33', 1),
+  (98, '::1', 'rhadi.indrawankkpi@gmail.com', '2022-04-13 13:06:15', 1),
+  (99, '::1', 'rhadi.indrawankkpi1@gmail.com', '2022-04-13 13:45:14', 1),
+  (100, '::1', 'rhadi.indrawankkpi@gmail.com', '2022-04-13 14:01:02', 1),
+  (101, '::1', 'rhadi.indrawankkpi1@gmail.com', '2022-04-13 14:07:27', 1),
+  (102, '::1', 'indrawanrhadi@gmail.com', '2022-04-13 14:15:22', 0),
+  (103, '::1', 'indrawanrhadi@gmail.com', '2022-04-13 14:15:38', 0),
+  (104, '::1', 'indrawanrhadi@gmail.com', '2022-04-13 14:16:11', 1),
+  (105, '::1', 'indrawanrhadi@gmail.com', '2022-04-13 14:23:27', 1),
+  (106, '::1', 'rhadi.indrawankkpi1@gmail.com', '2022-04-14 11:55:47', 1),
+  (107, '::1', 'rhadi.indrawankkpi1@gmail.com', '2022-04-14 16:53:32', 1),
+  (108, '::1', 'rhadi.indrawankkpi1@gmail.com', '2022-04-17 14:21:33', 1),
+  (109, '::1', 'indrawanrhadi@gmail.com', '2022-04-17 14:26:32', 1),
+  (110, '::1', 'indrawanrhadi@gmail.com', '2022-04-17 14:43:58', 1),
+  (111, '::1', 'andaf@gmail.com', '2022-04-17 14:46:34', 1),
+  (112, '::1', 'rhadi.indrawankkpi1@gmail.com', '2022-04-20 08:41:05', 1),
+  (113, '::1', 'indrawanrhadi@gmail.com', '2022-04-20 08:42:22', 1),
+  (114, '::1', 'andaf@gmail.com', '2022-04-20 08:42:51', 1),
+  (115, '::1', 'rhadi.indrawankkpi1@gmail.com', '2022-04-20 09:37:26', 1),
+  (116, '::1', 'rhadi.indrawankkpi@gmail.com', '2022-05-21 12:32:34', 1),
+  (117, '::1', 'rhadi.indrawankkpi1@gmail.com', '2022-05-21 13:25:04', 0),
+  (118, '::1', 'rhadi.indrawankkpi1@gmail.com', '2022-05-21 13:25:20', 1),
+  (119, '::1', 'rhadi.indrawankkpi@gmail.com', '2022-05-25 13:51:05', 1),
+  (120, '::1', 'andaf@gmail.com', '2022-05-25 14:40:50', 1),
+  (121, '::1', 'rhadi.indrawankkpi1@gmail.com', '2022-05-25 14:45:58', 1),
+  (122, '::1', 'indrawanrhadi@gmail.com', '2022-06-08 09:55:44', 1),
+  (123, '::1', 'rhadi.indrawankkpi@gmail.com', '2022-06-08 09:58:30', 1),
+  (124, '::1', 'rhadi.indrawankkpi1@gmail.com', '2022-06-08 09:59:34', 0),
+  (125, '::1', 'rhadi.indrawankkpi1@gmail.com', '2022-06-08 09:59:50', 1),
+  (126, '::1', 'rina@rina.com', '2022-06-08 10:02:52', 1),
+  (127, '::1', 'megatony@gmail.com', '2022-06-09 17:18:00', 1),
+  (128, '::1', 'andaf@gmail.com', '2022-06-09 18:38:26', 1),
+  (129, '::1', 'megatony@gmail.com', '2022-06-15 18:12:43', 1);
 /*!40000 ALTER TABLE `log_accessi` ENABLE KEYS */;
 
 -- Dumping structure for table mega-tony.pegawai
@@ -228,17 +281,21 @@ CREATE TABLE IF NOT EXISTS `pelanggan` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `email` varchar(100) DEFAULT NULL,
   `nama` varchar(100) DEFAULT NULL,
+  `jkel` varchar(100) DEFAULT NULL,
   `alamat` varchar(100) DEFAULT NULL,
   `no_wa` varchar(100) DEFAULT NULL,
   `password` varchar(256) DEFAULT NULL,
+  `tgl_lahir` date DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4;
 
--- Dumping data for table mega-tony.pelanggan: ~1 rows (approximately)
+-- Dumping data for table mega-tony.pelanggan: ~3 rows (approximately)
 /*!40000 ALTER TABLE `pelanggan` DISABLE KEYS */;
-INSERT INTO `pelanggan` (`id`, `email`, `nama`, `alamat`, `no_wa`, `password`) VALUES
-  (2, 'rhadi.indrawankkpi1@gmail.com', 'Rhadi Indrawan', 'Pongtiku', '085255554789', '$2y$12$DS5eeIoOtrnhw5U.QVAiROUOuGhZ6uHJvF.rqSp8UpmiTAPY6ChFq'),
-  (3, 'indrawanrhadi@gmail.com', 'indrawan', 'Jl. pongtiku I', '085255554789', '$2y$12$2EOK.qjA0aPBZnafzRXPneMv2qXP2a1GGGic5k2BYLC8KoqL2FIwS');
+INSERT INTO `pelanggan` (`id`, `email`, `nama`, `jkel`, `alamat`, `no_wa`, `password`, `tgl_lahir`) VALUES
+  (2, 'rhadi.indrawankkpi1@gmail.com', 'Rhadi Indrawan', 'l', 'Pongtiku', '085255554789', '$2y$12$DS5eeIoOtrnhw5U.QVAiROUOuGhZ6uHJvF.rqSp8UpmiTAPY6ChFq', '1988-04-14'),
+  (3, 'indrawanrhadi@gmail.com', 'indrawan', 'l', 'Jl. pongtiku I', '085255554789', '$2y$12$2EOK.qjA0aPBZnafzRXPneMv2qXP2a1GGGic5k2BYLC8KoqL2FIwS', '1999-04-14'),
+  (4, 'andaf@gmail.com', 'Andaf', 'l', 'Jl. perintis', '085255554789', '$2y$12$Xe0uKMTryrtrmmoeoiG.9uvrnM3HYeWpFvVa84blvDAi/D7J7QjPS', '1980-04-14'),
+  (5, 'rina@rina.com', 'Rina', 'p', 'Jl. Poros Maros', '085234978798', '$2y$12$49cz38UMjyPfQhogy88p6ep6b0z3vHcFK5CunRbnpGUIybBjo82rC', '1999-03-16');
 /*!40000 ALTER TABLE `pelanggan` ENABLE KEYS */;
 
 -- Dumping structure for table mega-tony.pembelian
@@ -275,9 +332,9 @@ CREATE TABLE IF NOT EXISTS `penjualan` (
   `id_admin` int(11) DEFAULT NULL,
   `nama_pelanggan` varchar(250) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4;
 
--- Dumping data for table mega-tony.penjualan: ~6 rows (approximately)
+-- Dumping data for table mega-tony.penjualan: ~9 rows (approximately)
 /*!40000 ALTER TABLE `penjualan` DISABLE KEYS */;
 INSERT INTO `penjualan` (`id`, `id_barang`, `jum_yg_dibeli`, `tot_yg_dibeli`, `tanggal`, `id_admin`, `nama_pelanggan`) VALUES
   (2, 2, 3, 45000, '2021-10-25 00:00:00', 5, 'Rhadi'),
@@ -286,7 +343,11 @@ INSERT INTO `penjualan` (`id`, `id_barang`, `jum_yg_dibeli`, `tot_yg_dibeli`, `t
   (5, 17, 25, 125000, '2021-11-03 00:00:00', 6, 'Indrawan'),
   (6, 4, 10, 10000, '2022-01-05 00:00:00', 6, 'Indrawan'),
   (7, 1, 2, 18000, '2022-03-20 00:00:00', 5, 'Rhadi'),
-  (8, 1, 5, 45000, '2022-03-18 00:00:00', 5, 'indrawan');
+  (8, 1, 5, 45000, '2022-03-18 00:00:00', 5, 'indrawan'),
+  (9, 4, 2, 2000, '2022-03-31 00:00:00', 5, 'Rhadi Indrawan'),
+  (10, 3, 3, 5700, '2022-03-31 00:00:00', 5, 'Rhadi Indrawan'),
+  (11, 2, 20, 300000, '2022-03-18 00:00:00', 5, 'indrawan'),
+  (12, 1, 10, 90000, '2022-03-19 00:00:00', 5, 'Rhadi Indrawan');
 /*!40000 ALTER TABLE `penjualan` ENABLE KEYS */;
 
 -- Dumping structure for table mega-tony.utenti
